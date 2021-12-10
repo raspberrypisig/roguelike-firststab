@@ -6,7 +6,6 @@ Setting up libtcod to work with the following:
 * VSCode
 * MSYS2(MinGW64)
 
-
 MSYS2 Setup
 ------------
 
@@ -20,30 +19,14 @@ MSYS2 Setup
  cd /mingw64/bin
  ln -s mingw32-make.exe make.exe
  ```
-
- VSCode
- ---------
- 1. Install VSCode
- 2. Left click on Extensions on left sidebar, then search and install the C/C++ Extension Pack from Microsoft
- 3. Press F1 to open the Command Palette, type:  settings json
-    pick the option "Preferences: Open Workspace Settings(JSON)"
- 4. Type the following in a Windows Command Prompt to verify installation:
+ 5. Type the following in a Windows Command Prompt to verify installation:
  ```
     g++ --version
     g++ -dumpmachine
     make --version
     cmake --version
  ```
- 
- 5. In the CMake toolbar at the bottom, select
- "No Active Kit", then select [Scan for Kits]
- 6. Press F1 to open the Command Palette: cmake edit
-    pick "CMake: Edit User-Local CMake Kits"
- 7. Append to the list with a comma, the fragment from cmake-tools-kits-fragment.json in this repo. Do not overwrite the entries all ready there.   
- 8. Clicking on "No Active Kit" will now show an entry at the bottom "Mingw64 GCC 11.2.0"
- 9. To build, click Build on the CMake toolbar at the bottom of the screen.
- 10. To run, click the play button on the CMake toolbar at the bottom of the screen.
- 
+
  install vcpkg in msys2 mingw64
  -------------------------------
  From 
@@ -69,4 +52,19 @@ MSYS2 Setup
    ```
    ./vcpkg install libtcod:x64-mingw-static
    ```
+
+ VSCode
+ ---------
+ 1. Install VSCode
+ 2. Left click on Extensions on left sidebar, then search and install the C/C++ Extension Pack from Microsoft
+ 3. In the CMake toolbar at the bottom, select
+ "No Active Kit", then select [Scan for Kits]
+ 4. Press F1 to open the Command Palette and type the following: cmake edit
+    pick "CMake: Edit User-Local CMake Kits"
+ 5. Append to the list with a comma, the fragment from cmake-tools-kits-fragment.json in this repo. Do not overwrite the entries all ready there.   
+ 6. Clicking on "No Active Kit" will now show an entry at the bottom "Mingw64 GCC 11.2.0"
+ 7. To build, click Build on the CMake toolbar at the bottom of the screen.
+ 8. To run, click the play button on the CMake toolbar at the bottom of the screen.
+ 
+
  
