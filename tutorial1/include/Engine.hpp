@@ -20,6 +20,7 @@ public:
 private:
   tcod::ContextPtr context;
   tcod::Console console;
+  pos_t player_pos;
 };
 
 } // namespace tutorial
