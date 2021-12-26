@@ -1,20 +1,3 @@
 {
-    "terminal.integrated.profiles.windows": {
-        "msys2": {
-            "path": [
-                "C:\\msys64\\usr\\bin\\bash.exe"
-            ],
-            "args": [
-                "--login"
-            ],
-            "env": {
-                "MSYSTEM": "MINGW64",
-                "CHERE_INVOKING": "1"
-            }
-        }
-    },
-    "terminal.integrated.defaultProfile.windows": "msys2",
-    "files.associations": {
-        "iostream": "cpp"
-    }
+    "cmake.configureOnOpen": true
 }
