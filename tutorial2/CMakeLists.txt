@@ -1,0 +1,12 @@
+include_directories(include)
+
+add_executable(tutorial2
+    main.cpp
+    src/Engine.cpp
+    src/Entity.cpp
+    src/Map.cpp
+)
+
+target_link_libraries(tutorial2
+    PRIVATE libtcod::libtcod
+)
