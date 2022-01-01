@@ -7,12 +7,12 @@ namespace tutorial {
 
 class Context {
 public:
-  Context() = delete;
+  Context() = default;
   Context(tcod::Console &console, const std::string &window_title);
-  tcod::ContextPtr create_new_context();
 
 private:
   TCOD_ContextParams params;
+  tcod::ContextPtr tcodContext;
 };
 
 } // namespace tutorial

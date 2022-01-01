@@ -12,10 +12,8 @@ Context::Context(tcod::Console &console, const std::string &window_title) {
   params.vsync = true;
   params.argc = 0; // This allows some user-control of the context.
   params.argv = nullptr;
-}
 
-tcod::ContextPtr Context::create_new_context() {
-  return tcod::new_context(params);
+  tcodContext = tcod::new_context(params);
 }
 
 } // namespace tutorial

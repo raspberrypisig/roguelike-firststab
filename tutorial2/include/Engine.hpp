@@ -19,7 +19,7 @@ public:
   void Render();
 
 private:
-  tcod::ContextPtr context;
+  Context context;
   tcod::Console console;
   tcod::Console offscreenConsole;
   pos_t player_pos;

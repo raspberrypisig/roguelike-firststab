@@ -4,7 +4,6 @@ add_executable(tutorial2
     main.cpp
     src/Engine.cpp
     src/Entity.cpp
-    src/Map.cpp
     src/Context.cpp
 )
 

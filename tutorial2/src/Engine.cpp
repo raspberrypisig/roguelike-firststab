@@ -4,12 +4,12 @@ namespace tutorial {
 
 constexpr auto PLAYER_ICON = "@";
 
-Engine::Engine(int width, int height, const std::string &title)
-    : player_pos(pos_t{width / 2, height / 2}) {
+Engine::Engine(int width, int height, const std::string &title) {
+  player_pos = pos_t{width / 2, height / 2};
   console = tcod::Console{width, height}; // Main console.
   offscreenConsole = tcod::Console{width, height};
   // Configure the context.
-  Context ctx(console, title);
+  context = Context(console, title);
 }
 
 bool Engine::IsRunning() const {
@@ -49,12 +49,7 @@ void Engine::HandleInput() {
   }
 }
 
-void Engine::Render() {
-  TCOD_console_clear(console.get());
-  tcod::print(console, {player_pos.x, player_pos.y}, PLAYER_ICON, std::nullopt,
-              std::nullopt);
-  context->present(console);
-}
+void Engine::Render() {}
 
 Engine::~Engine() { TCOD_quit(); }
 
