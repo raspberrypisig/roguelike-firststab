@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Context.hpp"
 #include "Position.hpp"
 #include <SDL2/SDL.h>
 #include <libtcod.h>
@@ -20,6 +21,7 @@ public:
 private:
   tcod::ContextPtr context;
   tcod::Console console;
+  tcod::Console offscreenConsole;
   pos_t player_pos;
 };
 
