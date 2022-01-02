@@ -50,7 +50,7 @@ void Engine::handle_input() {
   }
 }
 
-void Engine::render() {}
+void Engine::render() { context.update(console); }
 
 Engine::~Engine() { TCOD_quit(); }
 

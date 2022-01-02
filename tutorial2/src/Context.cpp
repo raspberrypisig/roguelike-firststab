@@ -16,4 +16,17 @@ Context::Context(tcod::Console &console, const std::string &window_title) {
   tcodContext = tcod::new_context(params);
 }
 
+void Context::update(tcod::Console &console) { tcodContext->present(console); }
+
+tcod::ConsolePtr new_console_from_rexpaint(const std::string &path) {
+  return std::move(tcod::load_xp(path).at(0));
+}
+void draw_entity(tcod::Console &console, pos_t pos, char icon,
+                 TCOD_ColorRGB color) {
+  constexpr auto background_color = TCOD_ColorRGBA{0, 0, 0, 255};
+  auto foreground_color = TCOD_ColorRGBA{color.r, color.g, color.b, 255};
+
+  console.at({pos.x, pos.y}) = {icon, foreground_color, background_color};
+}
+
 } // namespace tutorial
