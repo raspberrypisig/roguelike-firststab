@@ -31,4 +31,9 @@ void draw_entity(tcod::Console &console, pos_t pos, char icon,
   console.at({pos.x, pos.y}) = {icon, foreground_color, background_color};
 }
 
+void blit(tcod::Console &src, tcod::Console &dest) {
+  // blit
+  tcod::blit(dest, src);
+}
+
 } // namespace tutorial

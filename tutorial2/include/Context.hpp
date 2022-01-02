@@ -25,5 +25,6 @@ std::vector<tcod::ConsolePtr>
 new_console_from_rexpaint(const std::string &path);
 void draw_entity(tcod::Console &console, pos_t pos, char icon,
                  TCOD_ColorRGB color);
+void blit(tcod::Console &src, tcod::Console &dest);
 
 } // namespace tutorial

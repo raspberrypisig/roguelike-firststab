@@ -23,7 +23,7 @@ public:
 private:
   Context context;
   tcod::Console console;
-  tcod::ConsolePtr offscreenConsole;
+  tcod::Console offscreenConsole;
   // std::vector<tcod::ConsolePtr> offscreenConsoles;
   pos_t player_pos;
   Entity player;
