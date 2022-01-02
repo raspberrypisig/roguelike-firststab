@@ -18,8 +18,10 @@ Context::Context(tcod::Console &console, const std::string &window_title) {
 
 void Context::update(tcod::Console &console) { tcodContext->present(console); }
 
-tcod::ConsolePtr new_console_from_rexpaint(const std::string &path) {
-  return std::move(tcod::load_xp(path).at(0));
+std::vector<tcod::ConsolePtr>
+new_console_from_rexpaint(const std::string &path) {
+  auto consoles = tcod::load_xp(path);
+  return consoles;
 }
 void draw_entity(tcod::Console &console, pos_t pos, char icon,
                  TCOD_ColorRGB color) {

@@ -10,3 +10,6 @@ add_executable(tutorial2
 target_link_libraries(tutorial2
     PRIVATE libtcod::libtcod
 )
+
+
+add_dependencies(tutorial2 copy_assets)

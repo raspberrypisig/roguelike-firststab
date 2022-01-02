@@ -21,7 +21,8 @@ private:
 };
 
 // Should these free functions be put somewhere else (modern C++ and all)?
-tcod::ConsolePtr new_console_from_rexpaint(const std::string &path);
+std::vector<tcod::ConsolePtr>
+new_console_from_rexpaint(const std::string &path);
 void draw_entity(tcod::Console &console, pos_t pos, char icon,
                  TCOD_ColorRGB color);
 

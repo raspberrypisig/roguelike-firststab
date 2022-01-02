@@ -12,7 +12,8 @@ namespace tutorial {
 class Engine {
 
 public:
-  Engine(int width, int height, const std::string &title);
+  Engine(int width, int height, const std::string &title,
+         const std::string &rexpaintpath);
   ~Engine();
 
   void handle_input();
@@ -22,7 +23,8 @@ public:
 private:
   Context context;
   tcod::Console console;
-  tcod::Console offscreenConsole;
+  tcod::ConsolePtr offscreenConsole;
+  // std::vector<tcod::ConsolePtr> offscreenConsoles;
   pos_t player_pos;
   Entity player;
 };
