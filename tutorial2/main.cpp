@@ -7,8 +7,8 @@ int main(int argc, char *argv[]) {
 
   tutorial::Engine engine{WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE};
 
-  while (engine.IsRunning()) {
-    engine.Render();
-    engine.HandleInput();
+  while (engine.is_running()) {
+    engine.render();
+    engine.handle_input();
   }
 }

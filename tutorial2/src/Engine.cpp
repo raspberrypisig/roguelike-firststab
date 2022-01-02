@@ -2,17 +2,18 @@
 
 namespace tutorial {
 
-constexpr auto PLAYER_ICON = "@";
+constexpr auto player_icon = '@';
+constexpr auto player_color = TCOD_ColorRGB{.r = 255, .g = 255, .b = 255};
 
-Engine::Engine(int width, int height, const std::string &title) {
-  player_pos = pos_t{width / 2, height / 2};
-  console = tcod::Console{width, height}; // Main console.
-  offscreenConsole = tcod::Console{width, height};
-  // Configure the context.
+Engine::Engine(int width, int height, const std::string &title)
+    : player_pos(pos_t{.x = width / 2, .y = height / 2}),
+      player(Entity{player_pos, player_icon, player_color}),
+      console(tcod::Console{width, height}),
+      offscreenConsole(tcod::Console{width, height}) {
   context = Context(console, title);
 }
 
-bool Engine::IsRunning() const {
+bool Engine::is_running() const {
   SDL_Event event;
   SDL_PollEvent(&event);
 
@@ -24,7 +25,7 @@ bool Engine::IsRunning() const {
   return true;
 }
 
-void Engine::HandleInput() {
+void Engine::handle_input() {
   SDL_Event event;
   SDL_PollEvent(&event);
 
@@ -49,7 +50,7 @@ void Engine::HandleInput() {
   }
 }
 
-void Engine::Render() {}
+void Engine::render() {}
 
 Engine::~Engine() { TCOD_quit(); }
 
