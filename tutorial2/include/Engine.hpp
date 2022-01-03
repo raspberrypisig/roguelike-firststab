@@ -22,11 +22,9 @@ public:
 
 private:
   Context context;
+  Entity player;
   tcod::Console console;
   tcod::Console offscreenConsole;
-  // std::vector<tcod::ConsolePtr> offscreenConsoles;
-  pos_t player_pos;
-  Entity player;
 };
 
 } // namespace tutorial

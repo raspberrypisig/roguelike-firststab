@@ -3,18 +3,19 @@
 namespace tutorial {
 
 constexpr auto player_icon = '@';
-constexpr auto player_color = TCOD_ColorRGB{.r = 255, .g = 255, .b = 255};
+constexpr auto player_foreground_color =
+    TCOD_ColorRGB{.r = 128, .g = 128, .b = 128};
+constexpr auto player_background_color =
+    TCOD_ColorRGB{.r = 128, .g = 255, .b = 0};
+constexpr auto player_position = pos_t{.x = 40, .y = 12};
 
 Engine::Engine(int width, int height, const std::string &title,
                const std::string &path)
-    : player_pos(pos_t{.x = width / 2, .y = height / 2}),
-      player(Entity{player_pos, player_icon, player_color}) {
-
+    : player(Entity{player_position}) {
   tcod::Console c{width, height};
   console = tcod::Console(c);
   context = Context(console, title);
   offscreenConsole = tcod::Console(std::move(tcod::load_xp(path).at(0)));
-  // offscreenConsoles = new_console_from_rexpaint(path);
 }
 
 bool Engine::is_running() const {
@@ -38,16 +39,17 @@ void Engine::handle_input() {
     auto scancode = event.key.keysym.scancode;
     switch (scancode) {
     case SDL_SCANCODE_DOWN:
-      player_pos.y += 1;
+      player.pos.y += 1;
       break;
     case SDL_SCANCODE_UP:
-      player_pos.y -= 1;
+      player.pos.y -= 1;
       break;
     case SDL_SCANCODE_LEFT:
-      player_pos.x -= 1;
+      player.pos.x -= 1;
       break;
     case SDL_SCANCODE_RIGHT:
-      player_pos.x += 1;
+      player.pos.x += 1;
+
       break;
     }
     break;
@@ -55,8 +57,9 @@ void Engine::handle_input() {
 }
 
 void Engine::render() {
-  // do some work
-  tutorial::blit(offscreenConsole, console);
+  blit(offscreenConsole, console);
+  draw_char(console, player_position, player_icon, player_foreground_color,
+            player_background_color);
   context.update(console);
 }
 

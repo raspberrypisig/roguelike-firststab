@@ -2,8 +2,8 @@ include_directories(include)
 
 add_executable(tutorial2
     main.cpp
-    src/Engine.cpp
     src/Entity.cpp
+    src/Engine.cpp
     src/Context.cpp
 )
 

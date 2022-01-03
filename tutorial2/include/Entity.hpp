@@ -5,18 +5,9 @@
 #include <libtcod.h>
 
 namespace tutorial {
-class Entity {
+struct Entity {
 public:
-  Entity(pos_t pos, char icon, TCODColor color);
-
-  void SetPos(pos_t pos);
-
-  pos_t GetPos() const;
-  void Render();
-
-private:
+  Entity(pos_t pos);
   pos_t pos;
-  char icon;
-  TCODColor color;
 };
 } // namespace tutorial

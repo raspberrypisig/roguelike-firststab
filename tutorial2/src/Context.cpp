@@ -18,17 +18,13 @@ Context::Context(tcod::Console &console, const std::string &window_title) {
 
 void Context::update(tcod::Console &console) { tcodContext->present(console); }
 
-std::vector<tcod::ConsolePtr>
-new_console_from_rexpaint(const std::string &path) {
-  auto consoles = tcod::load_xp(path);
-  return consoles;
-}
-void draw_entity(tcod::Console &console, pos_t pos, char icon,
-                 TCOD_ColorRGB color) {
-  constexpr auto background_color = TCOD_ColorRGBA{0, 0, 0, 255};
-  auto foreground_color = TCOD_ColorRGBA{color.r, color.g, color.b, 255};
-
-  console.at({pos.x, pos.y}) = {icon, foreground_color, background_color};
+void draw_char(tcod::Console &console, pos_t pos, char icon,
+               TCOD_ColorRGB foreground_color, TCOD_ColorRGB background_color) {
+  //
+  console.at({pos.x, pos.y}) = {
+      icon,
+      {foreground_color.r, foreground_color.g, foreground_color.b, 255},
+      {background_color.r, background_color.g, background_color.b, 255}};
 }
 
 void blit(tcod::Console &src, tcod::Console &dest) {
