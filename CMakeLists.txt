@@ -10,5 +10,5 @@ add_custom_target(copy_assets
 )
 add_subdirectory(tutorial0)
 add_subdirectory(tutorial1)
-add_subdirectory(tutorial2)
+add_subdirectory(tutorial2a)
 
