@@ -37,28 +37,31 @@ void Engine::handle_input() {
   switch (event.type) {
   case SDL_KEYDOWN:
     auto scancode = event.key.keysym.scancode;
+    auto new_player_pos = player.pos;
     switch (scancode) {
     case SDL_SCANCODE_DOWN:
-      player.pos.y += 1;
+      new_player_pos.y += 1;
       break;
     case SDL_SCANCODE_UP:
-      player.pos.y -= 1;
+      new_player_pos.y -= 1;
       break;
     case SDL_SCANCODE_LEFT:
-      player.pos.x -= 1;
+      new_player_pos.x -= 1;
       break;
     case SDL_SCANCODE_RIGHT:
-      player.pos.x += 1;
+      new_player_pos.x += 1;
 
       break;
     }
+    if (console.in_bounds({new_player_pos.x, new_player_pos.y}))
+      player.pos = new_player_pos;
     break;
   }
 }
 
 void Engine::render() {
   blit(offscreenConsole, console);
-  draw_char(console, player_position, player_icon, player_foreground_color,
+  draw_char(console, player.pos, player_icon, player_foreground_color,
             player_background_color);
   context.update(console);
 }
