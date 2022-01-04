@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
                                 .concat("/../data/rexpaint_tutorial2b.xp")
                                 .generic_string();
   const std::string font_path = std::filesystem::current_path()
-                                    .concat("/../data/Kelora16x16_aa_ro.png")
+                                    .concat("/../data/terminal8x12_gs_ro.png")
                                     .generic_string();
 
   tutorial::Engine engine{WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE,
