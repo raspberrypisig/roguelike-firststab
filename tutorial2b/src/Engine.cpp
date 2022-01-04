@@ -25,11 +25,16 @@ Engine::Engine(int width, int height, const std::string &title,
   //auto ch2 = boo2.ch;
 
   // A real hack to replace EASCII/Code Page 437 character representing the floor with unicode equivalent
+  for (auto &tile : offscreenConsole) {
+    tile.ch = tcod::CHARMAP_CP437[tile.ch];
+  }
+  /*
   for (int i = 33; i <= 47; i++) {
     for (int j = 8; j <= 16; j++) {
       offscreenConsole.at({i, j}).ch = floor_icon_unicode;
     }
   }
+  */
 }
 
 bool Engine::is_running() const {
