@@ -7,6 +7,8 @@ constexpr auto player_foreground_color =
     TCOD_ColorRGBA{.r = 128, .g = 128, .b = 128, .a = 255};
 constexpr auto player_background_color =
     TCOD_ColorRGBA{.r = 128, .g = 255, .b = 0, .a = 255};
+constexpr auto wall_icon = '#';
+constexpr auto floor_icon_unicode = 0x2219;  //unicode for Code Page 437 character at index 249 (centered dot)
 
 Engine::Engine(int width, int height, const std::string &title,
                const std::string &path, const std::string &font_path)
@@ -21,6 +23,13 @@ Engine::Engine(int width, int height, const std::string &title,
   //auto ch = boo.ch;
   //auto boo2 = offscreenConsole.at({32, 7});
   //auto ch2 = boo2.ch;
+
+  // A real hack to replace EASCII/Code Page 437 character representing the floor with unicode equivalent
+  for (int i = 33; i <= 47; i++) {
+    for (int j = 8; j <= 16; j++) {
+      offscreenConsole.at({i, j}).ch = floor_icon_unicode;
+    }
+  }
 }
 
 bool Engine::is_running() const {
@@ -58,7 +67,7 @@ void Engine::handle_input() {
 
           break;
       }
-      if (console.in_bounds({new_player_pos.x, new_player_pos.y}))
+      if (console.in_bounds({new_player_pos.x, new_player_pos.y}) && offscreenConsole.at({new_player_pos.x, new_player_pos.y}).ch != wall_icon)
         player.pos = new_player_pos;
       break;
   }
