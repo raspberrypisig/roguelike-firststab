@@ -7,29 +7,35 @@ constexpr auto player_foreground_color =
     TCOD_ColorRGBA{.r = 128, .g = 128, .b = 128, .a = 255};
 constexpr auto player_background_color =
     TCOD_ColorRGBA{.r = 128, .g = 255, .b = 0, .a = 255};
-constexpr auto wall_icon = '#';
-constexpr auto floor_icon_unicode = 0x2219;  //unicode for Code Page 437 character at index 249 (centered dot)
+constexpr auto wall_icon = tcod::CHARMAP_TCOD[65];
+constexpr auto floor_icon_unicode = tcod::CHARMAP_TCOD[43];
+
+constexpr auto LIGHT_BLUE = tcod::ColorRGB{95, 205, 228};
+constexpr auto WHITE = tcod::ColorRGB{255, 255, 255};
 
 Engine::Engine(int width, int height, const std::string &title,
                const std::string &path, const std::string &font_path)
     : player(Entity{pos_t{.x = width / 2, .y = height / 2}}),
       console(tcod::Console{width, height}) {
   context = Context(console, title, font_path);
+
   offscreenConsole = tcod::Console(std::move(tcod::load_xp(path).at(0)));
+  //auto boo = offscreenConsole.at({13, 5}).ch;
 
-  //Debugging
-  // ch is . (EASCII/Code Page 437 = 249) , ch2 is # (EASCII/Code Page 437 = 35)
-  //auto boo = offscreenConsole.at({40, 12});
-  //auto ch = boo.ch;
-  //auto boo2 = offscreenConsole.at({32, 7});
-  //auto ch2 = boo2.ch;
-
-  // A real hack to replace EASCII/Code Page 437 character representing the floor with unicode equivalent
-  for (int i = 33; i <= 47; i++) {
-    for (int j = 8; j <= 16; j++) {
-      offscreenConsole.at({i, j}).ch = floor_icon_unicode;
+  for (auto &tile : offscreenConsole) {
+    if (tile.ch == 0x20) {
+      tile.ch = 0;
+      tile.bg = LIGHT_BLUE;
     }
+
+    //hack to fix rexpaint's mistake (not handling font column size > 16)
+    if (tile.ch == 53) {
+      tile.ch = 60;
+    }
+
+    tile.ch = tcod::CHARMAP_CP437[tile.ch];
   }
+  auto boo2 = offscreenConsole.at({13, 5}).ch;
 }
 
 bool Engine::is_running() const {

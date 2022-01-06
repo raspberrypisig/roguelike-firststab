@@ -14,8 +14,8 @@ Context::Context(tcod::Console &console, const std::string &window_title, const 
   params.argv = nullptr;
 
   //Tileset example using a Code Page 437 font.
-  tileset = tcod::load_tilesheet(font_path, {16, 16},
-                                 tcod::CHARMAP_CP437);
+  //tileset = tcod::load_tilesheet(font_path, {16, 16}, tcod::CHARMAP_CP437);
+  tileset = tcod::load_tilesheet(font_path, {20, 20}, tcod::CHARMAP_CP437);
   params.tileset = tileset.get();
 
   //Debugging
@@ -27,8 +27,7 @@ Context::Context(tcod::Console &console, const std::string &window_title, const 
 }
 
 void Context::update(tcod::Console &console) {
-  //
-  tcodContext->present(console);
+    tcodContext->present(console);
 }
 
 void draw_char(tcod::Console &console, pos_t pos, char icon,
