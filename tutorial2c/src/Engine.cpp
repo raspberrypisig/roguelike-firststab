@@ -2,13 +2,13 @@
 
 namespace tutorial {
 
-constexpr auto player_icon = '@';
+constexpr auto player_icon = tcod::CHARMAP_CP437[138];
 constexpr auto player_foreground_color =
     TCOD_ColorRGBA{.r = 128, .g = 128, .b = 128, .a = 255};
 constexpr auto player_background_color =
     TCOD_ColorRGBA{.r = 128, .g = 255, .b = 0, .a = 255};
-constexpr auto wall_icon = tcod::CHARMAP_TCOD[65];
-constexpr auto floor_icon_unicode = tcod::CHARMAP_TCOD[43];
+constexpr auto wall_icon = tcod::CHARMAP_CP437[65];
+constexpr auto floor_icon_unicode = tcod::CHARMAP_CP437[43];
 
 constexpr auto LIGHT_BLUE = tcod::ColorRGB{95, 205, 228};
 constexpr auto WHITE = tcod::ColorRGB{255, 255, 255};
@@ -28,14 +28,8 @@ Engine::Engine(int width, int height, const std::string &title,
       tile.bg = LIGHT_BLUE;
     }
 
-    //hack to fix rexpaint's mistake (not handling font column size > 16)
-    if (tile.ch == 53) {
-      tile.ch = 60;
-    }
-
     tile.ch = tcod::CHARMAP_CP437[tile.ch];
   }
-  auto boo2 = offscreenConsole.at({13, 5}).ch;
 }
 
 bool Engine::is_running() const {

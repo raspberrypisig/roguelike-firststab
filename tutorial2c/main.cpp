@@ -7,10 +7,10 @@ int main(int argc, char *argv[]) {
   constexpr int WINDOW_HEIGHT = 25;
   const std::string WINDOW_TITLE = "Roguelike libtcod C++ tutorial 2b";
   auto rexpaint_file_path = std::filesystem::current_path()
-                                .concat("/../data/mohan12x12.xp")
+                                .concat("/../data/tutorial2c.xp")
                                 .generic_string();
   const std::string font_path = std::filesystem::current_path()
-                                    .concat("/../data/urizen12x12_gs_ro.png")
+                                    .concat("/../data/urizenmodded12x12_gs_ro.png")
                                     .generic_string();
 
   tutorial::Engine engine{WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE,

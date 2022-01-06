@@ -22,7 +22,7 @@ class Context {
 
 // Should these free functions be put somewhere else (modern C++ and all)?
 std::vector<tcod::ConsolePtr> new_console_from_rexpaint(const std::string &path);
-void draw_char(tcod::Console &console, pos_t pos, char icon,
+void draw_char(tcod::Console &console, pos_t pos, int icon,
                TCOD_ColorRGBA foreground_color,
                TCOD_ColorRGBA background_color);
 void blit(tcod::Console &src, tcod::Console &dest);
