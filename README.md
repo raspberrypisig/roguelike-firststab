@@ -15,9 +15,13 @@ https://github.com/raspberrypisig/roguelike-firststab/tree/setup
 
 Just confirming the setup/plumbing is working OK.
 
+![Tutorial 0](https://github.com/raspberrypisig/roguelike-firststab/raw/main/images/tutorial0.jpg)
+
 ### Tutorial 1
 
 Get the @ symbol appear in the middle of the screen, with arrow keys able to move the player around.
+
+![Tutorial 1](https://github.com/raspberrypisig/roguelike-firststab/raw/main/images/tutorial1.jpg)
 
 ### Tutorial 2
 
@@ -32,10 +36,16 @@ I've veered a little bit from the offical python tutorial. Wanted to get a bette
 
 Loaded file from RexPaint. Using default font in Rexpaint, not using a tilesheet in libtcod, which means that a fallback system font is used (Lucida on Windows?). Using # symbol for wall, . symbol for floor, @ for player.
 
+![Tutorial 2a](https://github.com/raspberrypisig/roguelike-firststab/raw/main/images/tutorial2a.jpg)
+
 ### Tutorial 2b
 
 Loaded file from RexPaint. Using default font in Rexpaint, but this time loaded default terminal tilesheet provided by libtcod. Instead of the . symbol for floor , using EASCII character 249 (centered dot). Whereas normal ASCII translates 1-to-1 with Unicode codepoints perfectly, the same is not the case for the extended characters in EASCII. As a result, need to use a character mapping provided by libtcod.
 
+![Tutorial 2b](https://github.com/raspberrypisig/roguelike-firststab/raw/main/images/tutorial2b.jpg)
+
 ### Tutorial 2c
 
 Here, used a custom font in Rexpaint, and also used the same font as the tilesheet to draw the graphics.
+
+![Tutorial 2c](https://github.com/raspberrypisig/roguelike-firststab/raw/main/images/tutorial2c.jpg)
