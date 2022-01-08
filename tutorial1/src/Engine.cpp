@@ -6,17 +6,17 @@ constexpr auto PLAYER_ICON = "@";
 
 Engine::Engine(int width, int height, const std::string &title)
     : player_pos(pos_t{width / 2, height / 2}) {
-  console = tcod::Console{width, height}; // Main console.
+  console = tcod::Console{width, height};  // Main console.
 
   // Configure the context.
   auto params = TCOD_ContextParams{};
-  params.tcod_version = TCOD_COMPILEDVERSION; // This is required.
+  params.tcod_version = TCOD_COMPILEDVERSION;  // This is required.
   params.console =
-      console.get(); // Derive the window size from the console size.
-  params.window_title = "Libtcod Project";
+      console.get();  // Derive the window size from the console size.
+  params.window_title = title.c_str();
   params.sdl_window_flags = SDL_WINDOW_RESIZABLE;
   params.vsync = true;
-  params.argc = 0; // This allows some user-control of the context.
+  params.argc = 0;  // This allows some user-control of the context.
   params.argv = nullptr;
 
   // Tileset example using a Code Page 437 font.
@@ -32,8 +32,8 @@ bool Engine::IsRunning() const {
   SDL_PollEvent(&event);
 
   switch (event.type) {
-  case SDL_QUIT:
-    return false; // Exit.
+    case SDL_QUIT:
+      return false;  // Exit.
   }
 
   return true;
@@ -44,23 +44,23 @@ void Engine::HandleInput() {
   SDL_PollEvent(&event);
 
   switch (event.type) {
-  case SDL_KEYDOWN:
-    auto scancode = event.key.keysym.scancode;
-    switch (scancode) {
-    case SDL_SCANCODE_DOWN:
-      player_pos.y += 1;
+    case SDL_KEYDOWN:
+      auto scancode = event.key.keysym.scancode;
+      switch (scancode) {
+        case SDL_SCANCODE_DOWN:
+          player_pos.y += 1;
+          break;
+        case SDL_SCANCODE_UP:
+          player_pos.y -= 1;
+          break;
+        case SDL_SCANCODE_LEFT:
+          player_pos.x -= 1;
+          break;
+        case SDL_SCANCODE_RIGHT:
+          player_pos.x += 1;
+          break;
+      }
       break;
-    case SDL_SCANCODE_UP:
-      player_pos.y -= 1;
-      break;
-    case SDL_SCANCODE_LEFT:
-      player_pos.x -= 1;
-      break;
-    case SDL_SCANCODE_RIGHT:
-      player_pos.x += 1;
-      break;
-    }
-    break;
   }
 }
 
@@ -73,4 +73,4 @@ void Engine::Render() {
 
 Engine::~Engine() { TCOD_quit(); }
 
-} // namespace tutorial
+}  // namespace tutorial

@@ -1,78 +1,41 @@
+# Roguelike Tutorial 2021 C++
+
+Largely tried to follow Python Roguelike 2021 tutorial, but veered on tangents at times.
+
+File structure based on https://gitlab.com/libtcod-tutorials/libtcod-tutorials
+This really helped me "port" the python tutorials to C++ and it is really well written.
+
 ## Setup
 
-Setting up libtcod to work with the following:
+https://github.com/raspberrypisig/roguelike-firststab/tree/setup
 
-- VSCode
-- MSYS2(MinGW64)
+## Tutorials
 
-## MSYS2 Setup
+### Tutorial 0
 
-1. Install MSYS2
-2. Follow normal install instructions, update packages with pacman etc.
-3. Add the following directories to PATH :
-   C:\msys64\mingw64\bin
-4. Run the following commands in a MSYS2 (prefer the MSYS2 MinGW 64-bit variant)console:
+Just confirming the setup/plumbing is working OK.
 
-```
- pacman -S --needed git base-devel mingw-w64-x86_64-toolchain  mingw-w64-x86_64-clang mingw-w64-x86_64-cmake
- cd /mingw64/bin
- ln -s mingw32-make.exe make.exe
-```
+### Tutorial 1
 
-5.  Type the following in a Windows Command Prompt to verify installation:
+Get the @ symbol appear in the middle of the screen, with arrow keys able to move the player around.
 
-```
-   g++ --version
-   g++ -dumpmachine
-   clang --version
-   make --version
-   cmake --version
-```
+### Tutorial 2
 
-install vcpkg in msys2 mingw64
+I've veered a little bit from the offical python tutorial. Wanted to get a better feel for
 
----
+- loading files from RexPaint
+- loading tilesheets/tilesets/custom fonts
+- character encoding mapping (EASCII/Code Page 437 to Unicode)
+- using ASCII instead of colored tiles
 
-From
-https://github.com/microsoft/vcpkg/blob/master/docs/users/mingw.md
-https://github.com/microsoft/vcpkg/blob/master/docs/users/integration.md
+### Tutorial 2a
 
-1. Open MSYS2 MinGW 64-bit variant of the console, or type: source shell mingw64
-2.
+Loaded file from RexPaint. Using default font in Rexpaint, not using a tilesheet in libtcod, which means that a fallback system font is used (Lucida on Windows?). Using # symbol for wall, . symbol for floor, @ for player.
 
-```
-  cd /mingw64/bin
-  git clone https://github.com/microsoft/vcpkg.git
-  cd vcpkg
-  ./bootstrap-vcpkg.bat
-  export VCPKG_DEFAULT_TRIPLET=x64-mingw-static
-  export VCPKG_DEFAULT_HOST_TRIPLET=x64-mingw-static
-```
+### Tutorial 2b
 
-To test setup
+Loaded file from RexPaint. Using default font in Rexpaint, but this time loaded default terminal tilesheet provided by libtcod. Instead of the . symbol for floor , using EASCII character 249 (centered dot). Whereas normal ASCII translates 1-to-1 with Unicode codepoints perfectly, the same is not the case for the extended characters in EASCII. As a result, need to use a character mapping provided by libtcod.
 
-```
-./vcpkg install zlib:x64-mingw-static
-```
+### Tutorial 2c
 
-For the real deal
-
-```
-./vcpkg install libtcod:x64-mingw-static
-```
-
-VSCode
-
----
-
-1.  Install VSCode
-2.  git clone this repo and open in VSCode
-3.  In this repo, have a look at the following files:
-    - CMakeLists.txt
-    - .vscode/c_cpp_properties.json
-    - .vscode/cmake-kits.json
-4.  Left click on Extensions on left sidebar, then search and install the C/C++ Extension Pack from Microsoft
-5.  In the CMake toolbar at the bottom, select "No Active Kit", then select ""Mingw64 GCC 10.2.0" (This comes from .vscode/cmake-kits.json)
-6.  To build, click Build on the CMake toolbar at the bottom of the screen.
-7.  To run, click the play button on the CMake toolbar at the bottom of the screen.
-8.  To debug, click on the bug icon to the left of the play button.
+Here, used a custom font in Rexpaint, and also used the same font as the tilesheet to draw the graphics.

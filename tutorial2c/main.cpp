@@ -5,7 +5,7 @@
 int main(int argc, char *argv[]) {
   constexpr int WINDOW_WIDTH = 80;
   constexpr int WINDOW_HEIGHT = 25;
-  const std::string WINDOW_TITLE = "Roguelike libtcod C++ tutorial 2b";
+  const std::string WINDOW_TITLE = "Roguelike libtcod C++ tutorial 2c";
   auto rexpaint_file_path = std::filesystem::current_path()
                                 .concat("/../data/tutorial2c-fancy.xp")
                                 .generic_string();
