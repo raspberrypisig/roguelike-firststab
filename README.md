@@ -3,23 +3,19 @@
 Setting up libtcod to work with the following:
 
 - VSCode
-- MSYS2(MinGW64)
+- MSYS2
 
 ## MSYS2 Setup
 
-1. Install MSYS2
-2. Follow normal install instructions, update packages with pacman etc.
-3. Add the following directories to PATH :
-   C:\msys64\mingw64\bin
-4. Run the following commands in a MSYS2 (prefer the MSYS2 MinGW 64-bit variant)console:
+1. Install MSYS2 and follow normal install instructions, update packages with pacman.
+2. In the MSYS2 MSYS console, run:
 
 ```
  pacman -S --needed git base-devel mingw-w64-x86_64-toolchain  mingw-w64-x86_64-clang mingw-w64-x86_64-cmake
- cd /mingw64/bin
- ln -s mingw32-make.exe make.exe
 ```
 
-5.  Type the following in a Windows Command Prompt to verify installation:
+3.  Close MSYS2 MSYS console, and now open MSYS2 MINGW 64-bit console
+4. Type the following to confirm installation of compiler toolchain.
 
 ```
    g++ --version
