@@ -58,7 +58,7 @@ For the real deal
 ./vcpkg install libtcod:x64-mingw-static
 ```
 
-VSCode
+# VSCode
 
 ---
 
