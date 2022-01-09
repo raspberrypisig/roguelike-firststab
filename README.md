@@ -29,11 +29,6 @@ Setting up libtcod to work with the following:
 
 ---
 
-From
-https://github.com/microsoft/vcpkg/blob/master/docs/users/mingw.md
-
-https://github.com/microsoft/vcpkg/blob/master/docs/users/integration.md
-
 1. Open MSYS2 MinGW 64-bit variant of the console, or type: source shell mingw64
 2.
 
