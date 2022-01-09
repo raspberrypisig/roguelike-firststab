@@ -63,13 +63,14 @@ For the real deal
 ---
 
 1.  Install VSCode
-2.  git clone this repo(setup branch) and open in VSCode
-3.  In this repo, have a look at the following files:
-    - CMakeLists.txt
-    - .vscode/c_cpp_properties.json
-    - .vscode/cmake-kits.json
-4.  Left click on Extensions on left sidebar, then search and install the C/C++ Extension Pack from Microsoft
-5.  In the CMake toolbar at the bottom, select "No Kit Selected", then select ""Mingw64 GCC 10.2.0" (This comes from .vscode/cmake-kits.json)
-6.  To build, click Build on the CMake toolbar at the bottom of the screen.
-7.  To run, click the play button on the CMake toolbar at the bottom of the screen.
-8.  To debug, click on the bug icon to the left of the play button.
+2. Clone this repo somewhere (setup branch)
+
+```
+git clone -b setup https://github.com/raspberrypisig/roguelike-firststab
+```
+
+3.  Left click on Extensions on left sidebar, then search and install the C/C++ Extension Pack from Microsoft
+4.  In the CMake toolbar at the bottom, select "No Kit Selected", then select ""Mingw64 GCC 11.2.0" (This comes from .vscode/cmake-kits.json)
+5.  To build, click Build on the CMake toolbar at the bottom of the screen.
+6.  To run, click the play button on the CMake toolbar at the bottom of the screen.
+7.  To debug, click on the bug icon to the left of the play button.
