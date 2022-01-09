@@ -7,7 +7,7 @@ Setting up libtcod to work with the following:
 
 ## MSYS2 Setup
 
-1. Install MSYS2 and follow normal install instructions, update packages with pacman.
+1. Install MSYS2 and follow normal install instructions from https://www.msys2.org/
 2. In the MSYS2 MSYS console, run:
 
 ```
@@ -25,11 +25,11 @@ Setting up libtcod to work with the following:
    cmake --version
 ```
 
-## Install vcpkg in msys2 mingw64
+## Install vcpkg
 
 ---
 
-1. Open MSYS2 MinGW 64-bit variant of the console, or type: source shell mingw64
+1. Open MSYS2 MINGW 64-bit console
 2.
 
 ```
