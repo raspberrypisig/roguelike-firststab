@@ -63,14 +63,16 @@ For the real deal
 ---
 
 1.  Install VSCode
-2. Clone this repo somewhere (setup branch)
+2.  Clone this repo somewhere (setup branch)
 
 ```
 git clone -b setup https://github.com/raspberrypisig/roguelike-firststab
 ```
 
-3.  Left click on Extensions on left sidebar, then search and install the C/C++ Extension Pack from Microsoft
-4.  In the CMake toolbar at the bottom, select "No Kit Selected", then select ""Mingw64 GCC 11.2.0" (This comes from .vscode/cmake-kits.json)
-5.  To build, click Build on the CMake toolbar at the bottom of the screen.
-6.  To run, click the play button on the CMake toolbar at the bottom of the screen.
-7.  To debug, click on the bug icon to the left of the play button.
+3.  Open the project in VSCode
+4.  Left click on Extensions on left sidebar, then search and install the C/C++ Extension Pack from Microsoft
+5.  In the CMake toolbar at the bottom, select "No Kit Selected", then select ""Mingw64 GCC 11.2.0" (This comes from .vscode/cmake-kits.json)
+6.  To build, click Build on the CMake toolbar at the bottom of the screen.
+7.  To run, click the play button on the CMake toolbar at the bottom of the screen.
+8.  To debug, click on the bug icon to the left of the play button. I found that I have to put a breakpoint in the main function, otherwise it won't break at any
+    other breakpoint. I'm sure I'm missing something obvious.
