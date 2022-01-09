@@ -71,3 +71,4 @@ git clone -b setup https://github.com/raspberrypisig/roguelike-firststab
 7.  To run, click the play button on the CMake toolbar at the bottom of the screen.
 8.  To debug, click on the bug icon to the left of the play button. I found that I have to put a breakpoint in the main function, otherwise it won't break at any
     other breakpoint. I'm sure I'm missing something obvious.
+9.  When CMake doesn't do what you want, delete build folder, and try again.
