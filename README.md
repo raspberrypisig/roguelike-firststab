@@ -54,8 +54,6 @@ For the real deal
 
 # VSCode
 
----
-
 1.  Install VSCode
 2.  Clone this repo somewhere (setup branch)
 
