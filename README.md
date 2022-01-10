@@ -8,7 +8,7 @@ Setting up libtcod to work with the following:
 
 ## MSYS2 Setup
 
-1. Install MSYS2 at C:\msys64 and follow normal install instructions from https://www.msys2.org/
+1. Install latest MSYS2 at C:\msys64 and follow normal install instructions from https://www.msys2.org/
 2. In the MSYS2 MSYS console, run:
 
 ```
