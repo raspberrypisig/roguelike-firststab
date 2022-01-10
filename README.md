@@ -28,8 +28,8 @@ Setting up libtcod to work with the following:
 
 ## Install vcpkg
 
-1. Open MSYS2 MINGW 64-bit console
-2.
+Open MSYS2 MINGW 64-bit console
+
 
 ```
   cd /mingw64/bin
