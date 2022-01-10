@@ -2,6 +2,7 @@
 
 Setting up libtcod to work with the following:
 
+- Windows 10 or 11 64-bit
 - VSCode
 - MSYS2
 
