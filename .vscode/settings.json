@@ -1,4 +1,5 @@
 {
   "cmake.configureOnOpen": true,
-  "cmake.cmakePath": "C:\\msys64\\mingw64\\bin\\cmake.exe"
+  "cmake.cmakePath": "C:\\msys64\\mingw64\\bin\\cmake.exe",
+  "C_Cpp.clang_format_style": "{BasedOnStyle: Google, ColumnLimit: 0}"
 }
