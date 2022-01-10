@@ -52,6 +52,12 @@ For the real deal
 ./vcpkg install libtcod:x64-mingw-static
 ```
 
+At the time of this writing, the version that was installed was 1.19.0
+
+```
+./vcpkg list
+```
+
 # VSCode
 
 1.  Install VSCode
