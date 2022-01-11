@@ -18,6 +18,7 @@ Engine::Engine(int width, int height, const std::string &title)
   params.vsync = true;
   params.argc = 0;  // This allows some user-control of the context.
   params.argv = nullptr;
+  params.renderer_type = TCOD_RENDERER_SDL2;
 
   // Tileset example using a Code Page 437 font.
   // "terminal8x8_gs_ro.png" must be in the working directory.

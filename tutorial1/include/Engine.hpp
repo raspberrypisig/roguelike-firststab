@@ -1,15 +1,16 @@
 #pragma once
 
-#include "Position.hpp"
 #include <SDL2/SDL.h>
 #include <libtcod.h>
+
 #include <string>
+
+#include "Position.hpp"
 
 namespace tutorial {
 
 class Engine {
-
-public:
+ public:
   Engine(int width, int height, const std::string &title);
   ~Engine();
 
@@ -17,10 +18,10 @@ public:
   bool IsRunning() const;
   void Render();
 
-private:
+ private:
   tcod::ContextPtr context;
   tcod::Console console;
   pos_t player_pos;
 };
 
-} // namespace tutorial
+}  // namespace tutorial

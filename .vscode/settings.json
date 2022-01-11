@@ -39,5 +39,6 @@
         "typeinfo": "cpp",
         "utility": "cpp"
     },
+    "cmake.cmakePath": "C:\\msys64\\mingw64\\bin\\cmake.exe",
     "C_Cpp.clang_format_style": "{BasedOnStyle: Google, ColumnLimit: 0}"
 }

@@ -12,6 +12,7 @@ Context::Context(tcod::Console &console, const std::string &window_title) {
   params.vsync = true;
   params.argc = 0;  // This allows some user-control of the context.
   params.argv = nullptr;
+  params.renderer_type = TCOD_RENDERER_SDL2;
 
   tcodContext = tcod::new_context(params);
 }

@@ -14,6 +14,7 @@ int main(int argc, char *argv[]) {
   params.vsync = true;
   params.argc = argc;  // This allows some user-control of the context.
   params.argv = argv;
+  params.renderer_type = TCOD_RENDERER_SDL2;
 
   // Tileset example using a Code Page 437 font.
   // "terminal8x8_gs_ro.png" must be in the working directory.
