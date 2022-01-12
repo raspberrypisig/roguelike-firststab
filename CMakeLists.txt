@@ -4,7 +4,7 @@ project (roguelike-firststab)
 #print_all_variables()
 find_package(libtcod CONFIG REQUIRED)
 add_definitions(-DSDL_MAIN_HANDLED)
-
+set(CMAKE_EXE_LINKER_FLAGS " -static")
 add_custom_target(copy_assets
   COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_LIST_DIR}/cmake/copy-assets.cmake ${CMAKE_CURRENT_LIST_DIR}/data
 )
