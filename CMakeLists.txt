@@ -13,4 +13,5 @@ add_subdirectory(tutorial1)
 add_subdirectory(tutorial2a)
 add_subdirectory(tutorial2b)
 add_subdirectory(tutorial2c)
+add_subdirectory(tutorial3)
 
