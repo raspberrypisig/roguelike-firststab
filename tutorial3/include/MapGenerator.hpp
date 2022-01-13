@@ -1,19 +1,26 @@
 #pragma once
 
 #include <libtcod/bsp.hpp>
+#include <libtcod/mersenne.hpp>
 #include <memory>
 
 #include "Map.hpp"
 
 namespace tutorial {
+
+constexpr static auto MAX_ROOMS = 8;
+constexpr static auto MAX_ROOM_SIZE = 12;
+constexpr static auto MIN_ROOM_SIZE = 6;
+
+Map generate_map(int width, int height);
+
 class MapGenerator : public ITCODBspCallback {
  public:
-  MapGenerator(int max_rooms, int min_room_size, int max_room_size, int width,
-               int height);
+  MapGenerator() = default;
 
   bool visitNode(TCODBsp *node, void *userData) override;
 
-  std::unique_ptr<Map> generate();
+  void generate(std::unique_ptr<Map> map);
 
  private:
   int maxRooms;

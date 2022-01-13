@@ -7,6 +7,8 @@
 
 #include "Context.hpp"
 #include "Entity.hpp"
+#include "Map.hpp"
+#include "MapGenerator.hpp"
 #include "Position.hpp"
 
 namespace tutorial {
@@ -25,6 +27,7 @@ class Engine {
   Entity player;
   tcod::Console console;
   tcod::Console offscreenConsole;
+  Map map;
 };
 
 }  // namespace tutorial
