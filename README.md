@@ -49,3 +49,9 @@ Loaded file from RexPaint. Using default font in Rexpaint, but this time loaded 
 Here, used a custom font in Rexpaint, and also used the same font as the tilesheet to draw the graphics.
 
 ![Tutorial 2c](https://github.com/raspberrypisig/roguelike-firststab/raw/main/images/tutorial2c.jpg)
+
+### Tutorial 3
+
+Inspired by
+
+https://github.com/bradJM/heck

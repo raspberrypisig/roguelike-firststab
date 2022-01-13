@@ -5,6 +5,9 @@ add_executable(tutorial3
     src/Context.cpp
     src/Engine.cpp
     src/Entity.cpp
+    src/Room.cpp
+    src/Map.cpp
+    src/MapGenerator.cpp
 )
 
 target_link_libraries(tutorial3
