@@ -57,3 +57,7 @@ Inspired by
 https://github.com/bradJM/heck
 
 Veered of the python tutorial part 3 to implement same result using BSP trees
+
+### Tutorial 3a
+
+Getting started with BSP Trees in libtcod

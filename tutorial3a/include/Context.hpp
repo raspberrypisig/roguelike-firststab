@@ -4,6 +4,7 @@
 
 #include <libtcod.hpp>
 
+#include "Map.hpp"
 #include "Position.hpp"
 
 namespace tutorial {
@@ -26,4 +27,6 @@ void draw_char(tcod::Console &console, pos_t pos, int icon,
                TCOD_ColorRGBA foreground_color,
                TCOD_ColorRGBA background_color);
 void blit(tcod::Console &src, tcod::Console &dest);
+void draw_rooms(tcod::Console &console, Map map);
+
 }  // namespace tutorial

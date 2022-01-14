@@ -1,17 +1,17 @@
 include_directories(include)
 
-add_executable(tutorial3
+add_executable(tutorial3a
     main.cpp
     src/Context.cpp
     src/Engine.cpp
     src/Entity.cpp
-    src/Room.cpp
+    src/Rectangle.cpp
     src/Map.cpp
     src/MapGenerator.cpp
 )
 
-target_link_libraries(tutorial3
+target_link_libraries(tutorial3a
     PRIVATE libtcod::libtcod
 )
 
-add_dependencies(tutorial3 copy_assets)
+add_dependencies(tutorial3a copy_assets)

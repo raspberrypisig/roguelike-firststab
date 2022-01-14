@@ -14,9 +14,11 @@ constexpr auto WHITE = tcod::ColorRGB{255, 255, 255};
 
 Engine::Engine(int width, int height, const std::string &title, const std::string &font_path)
     : player(Entity{pos_t{.x = width / 2, .y = height / 2 - 2}}),
-      console(tcod::Console{width, height}),
-      map(generate_map(width, height)) {
+      console(tcod::Console{width, height}) {
   context = Context(console, title, font_path);
+  MapGenerator generator{width, height};
+  map = generator.generate();
+  draw_rooms(console, map);
   //auto char_at_offset = offscreenConsole.at({36, 8}).ch;
   //auto foreground_color_at_offset = offscreenConsole.at({36, 8}).fg;
   //auto background_color_at_offset = offscreenConsole.at({36, 8}).bg;

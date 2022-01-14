@@ -8,19 +8,21 @@
 
 namespace tutorial {
 
-constexpr static auto MAX_ROOMS = 8;
-constexpr static auto MAX_ROOM_SIZE = 12;
+constexpr static auto MAX_GENERATOR_LEVELS = 8;
+constexpr static auto MAX_ROOM_SIZE = 14;
 constexpr static auto MIN_ROOM_SIZE = 6;
+constexpr static auto MAX_H_RATIO = 2.5F;
+constexpr static auto MAX_V_RATIO = 1.5F;
 
 Map generate_map(int width, int height);
 
 class MapGenerator : public ITCODBspCallback {
  public:
-  MapGenerator() = default;
+  MapGenerator(int width, int height);
 
   bool visitNode(TCODBsp *node, void *userData) override;
 
-  void generate(std::unique_ptr<Map> map);
+  Map generate();
 
  private:
   int maxRooms;
@@ -28,6 +30,7 @@ class MapGenerator : public ITCODBspCallback {
   int maxRoomSize;
   int width;
   int height;
+  Map map;
 };
 
 }  // namespace tutorial

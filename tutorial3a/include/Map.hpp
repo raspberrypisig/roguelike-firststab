@@ -2,7 +2,7 @@
 
 #include <vector>
 
-#include "Room.hpp"
+#include "Rectangle.hpp"
 
 namespace tutorial {
 
@@ -12,12 +12,14 @@ class Map {
   Map(int width, int height);
   int get_width() const;
   int get_height() const;
+  void addRoom(pos_t top_left, int w, int h);
+
+  std::vector<Room> rooms;
+  std::vector<Tunnel> tunnels;
 
  private:
   int width;
   int height;
-
-  std::vector<Room> rooms;
 };
 
 }  // namespace tutorial

@@ -40,4 +40,10 @@ void draw_char(tcod::Console &console, pos_t pos, int icon,
 
 void blit(tcod::Console &src, tcod::Console &dest) { tcod::blit(dest, src); }
 
+void draw_rooms(tcod::Console &console, Map map) {
+  for (const auto &room : map.rooms) {
+    tcod::draw_rect(console, {room.top_left.x, room.top_left.y, room.width, room.height}, '.', {}, {}, TCOD_BKGND_SET);
+  }
+}
+
 }  // namespace tutorial
