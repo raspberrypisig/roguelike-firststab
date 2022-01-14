@@ -61,3 +61,5 @@ Veered of the python tutorial part 3 to implement same result using BSP trees
 ### Tutorial 3a
 
 Getting started with BSP Trees in libtcod
+
+![Tutorial 3a](https://raw.githubusercontent.com/raspberrypisig/roguelike-firststab/main/images/tutorial3a.jpg)
