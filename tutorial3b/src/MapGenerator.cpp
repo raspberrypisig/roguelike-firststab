@@ -23,17 +23,18 @@ bool MapGenerator::visitNode(TCODBsp *node, void *userData) {
 
 // We generate a room  for every BSP "leaf" partition. This will be culled later.
 Room MapGenerator::generate_room(int x, int y, int width, int height) {
+  // Put your custom random room generating algorithm here.
+
   int initial_x = x;
   int initial_y = y;
-  int initial_width = width - 1;
-  int initial_height = height - 1;
+  int initial_width = width - 2;
+  int initial_height = height - 2;
 
   int random_x = initial_x;
   int random_y = initial_y;
   int random_width = initial_width;
   int random_height = initial_height;
 
-  // Put your custom random room generating algorithm here.
   random_width = TCODRandom::getInstance()->getInt(random_width / 2, random_width);
   random_height = TCODRandom::getInstance()->getInt(MIN_ROOM_HEIGHT, random_height);
 
