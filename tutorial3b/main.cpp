@@ -3,7 +3,7 @@
 int main(int argc, char *argv[]) {
   constexpr int WINDOW_WIDTH = 80;
   constexpr int WINDOW_HEIGHT = 25;
-  const std::string WINDOW_TITLE = "Roguelike libtcod C++ tutorial 3a";
+  const std::string WINDOW_TITLE = "Roguelike libtcod C++ tutorial 3b";
   const std::string font_path = std::filesystem::current_path()
                                     .concat("/../data/Kelora16x16_aa_ro.png")
                                     .generic_string();

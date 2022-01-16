@@ -65,3 +65,13 @@ Getting started with BSP Trees in libtcod
 ![Tutorial 3a](https://raw.githubusercontent.com/raspberrypisig/roguelike-firststab/main/images/tutorial3a.jpg)
 
 We can then judiciously choose to put rooms in those location, in the safe knowledge that they cannot overlap.
+
+### Tutorial 3b
+
+Two step process.
+
+First step is to create random sized rooms in each BSP partition.
+
+![Tutorial 3b part 1](https://raw.githubusercontent.com/raspberrypisig/roguelike-firststab/main/images/tutorial3b-part1.jpg)
+
+Second step is to cull the number of rooms to a visually acceptable number.
