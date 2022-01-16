@@ -8,6 +8,7 @@ Map MapGenerator::generate() {
   auto bsp{TCODBsp{0, 0, width, height}};
   bsp.splitRecursive(NULL, BSP_MAX_GENERATOR_LEVELS, BSP_MIN_ROOM_WIDTH, BSP_MIN_ROOM_HEIGHT, BSP_MAX_H_RATIO, BSP_MAX_V_RATIO);
   bsp.traverseInvertedLevelOrder(this, NULL);
+  cull();
   return map;
 }
 
@@ -40,6 +41,14 @@ Room MapGenerator::generate_room(int x, int y, int width, int height) {
   random_y += TCODRandom::getInstance()->getInt(0, initial_height - random_height);
 
   return Room(pos_t{random_x, random_y}, random_width, random_height);
+}
+
+void MapGenerator::cull() {
+  std::random_device rd;
+  std::mt19937 rng(rd());
+  int room_count = TCODRandom::getInstance()->getInt(MIN_ROOM_NUMBER, MAX_ROOM_NUMBER);
+  std::shuffle(map.rooms.begin(), map.rooms.end(), rng);
+  map.rooms.erase(map.rooms.begin() + room_count, map.rooms.end());
 }
 
 }  // namespace tutorial
