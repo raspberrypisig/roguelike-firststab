@@ -12,7 +12,7 @@ class Map {
   Map(int width, int height);
   int get_width() const;
   int get_height() const;
-  void addRoom(pos_t top_left, int w, int h);
+  void addRoom(Room room);
 
   std::vector<Room> rooms;
   std::vector<Tunnel> tunnels;

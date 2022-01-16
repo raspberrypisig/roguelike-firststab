@@ -5,6 +5,7 @@
 #include <memory>
 
 #include "Map.hpp"
+#include "Rectangle.hpp"
 
 namespace tutorial {
 
@@ -23,6 +24,8 @@ class MapGenerator : public ITCODBspCallback {
   bool visitNode(TCODBsp *node, void *userData) override;
 
   Map generate();
+
+  Room generate_room(int x, int y, int width, int height);
 
  private:
   int maxRooms;

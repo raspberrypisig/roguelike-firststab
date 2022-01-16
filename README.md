@@ -63,3 +63,5 @@ Veered of the python tutorial part 3 to implement same result using BSP trees
 Getting started with BSP Trees in libtcod
 
 ![Tutorial 3a](https://raw.githubusercontent.com/raspberrypisig/roguelike-firststab/main/images/tutorial3a.jpg)
+
+We can then judiciously choose to put rooms in those location, in the safe knowledge that they cannot overlap.
