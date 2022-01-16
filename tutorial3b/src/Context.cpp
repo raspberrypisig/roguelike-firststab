@@ -42,7 +42,14 @@ void blit(tcod::Console &src, tcod::Console &dest) { tcod::blit(dest, src); }
 
 void draw_rooms(tcod::Console &console, Map map) {
   for (const auto &room : map.rooms) {
-    tcod::draw_rect(console, {room.top_left.x, room.top_left.y, room.width, room.height}, '.', {}, {}, TCOD_BKGND_SET);
+    //draw floor
+    tcod::draw_rect(console, {room.top_left.x + 1, room.top_left.y + 1, room.width - 2, room.height - 2}, '.', {}, {}, TCOD_BKGND_SET);
+
+    //draw walls
+    tcod::draw_rect(console, {room.top_left.x, room.top_left.y, room.width, 1}, '#', TCOD_ColorRGB{255, 128, 0}, TCOD_ColorRGB{0, 0, 0}, TCOD_BKGND_SET);
+    tcod::draw_rect(console, {room.bottom_right.x, room.top_left.y, 1, room.height}, '#', TCOD_ColorRGB{255, 128, 0}, TCOD_ColorRGB{0, 0, 0}, TCOD_BKGND_SET);
+    tcod::draw_rect(console, {room.top_left.x, room.bottom_right.y, room.width, 1}, '#', TCOD_ColorRGB{255, 128, 0}, TCOD_ColorRGB{0, 0, 0}, TCOD_BKGND_SET);
+    tcod::draw_rect(console, {room.top_left.x, room.top_left.y, 1, room.height}, '#', TCOD_ColorRGB{255, 128, 0}, TCOD_ColorRGB{0, 0, 0}, TCOD_BKGND_SET);
   }
 }
 
