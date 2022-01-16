@@ -74,8 +74,10 @@ First step is to create random sized rooms in each BSP partition.
 
 ![Tutorial 3b part 1](https://raw.githubusercontent.com/raspberrypisig/roguelike-firststab/main/images/tutorial3b-part1.jpg)
 
-Second step is to cull the number of rooms to a visually acceptable number.
+Second step is to cull the number of rooms to a visually acceptable number and ensure no overlaps between rooms.
 
 ![Tutorial 3b part 2](https://raw.githubusercontent.com/raspberrypisig/roguelike-firststab/main/images/tutorial3b-part2.jpg)
 
 Third step is to put walls around the rooms.
+
+![Tutorial 3b part 3](https://raw.githubusercontent.com/raspberrypisig/roguelike-firststab/main/images/tutorial3b-part3.jpg)

@@ -9,6 +9,9 @@
 
 namespace tutorial {
 
+constexpr static auto WALL_ICON = '#';
+constexpr auto FLOOR_ICON = tcod::CHARMAP_CP437[249];
+
 class Context {
  public:
   Context() = default;

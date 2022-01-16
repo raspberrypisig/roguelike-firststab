@@ -7,7 +7,7 @@ constexpr auto player_foreground_color =
     TCOD_ColorRGBA{.r = 128, .g = 255, .b = 0, .a = 255};
 constexpr auto player_background_color =
     TCOD_ColorRGBA{.r = 10, .g = 10, .b = 10, .a = 255};
-constexpr auto floor_icon = tcod::CHARMAP_CP437[40];
+constexpr auto floor_icon = tcod::CHARMAP_CP437[249];  //.
 
 constexpr auto LIGHT_BLUE = tcod::ColorRGB{95, 205, 228};
 constexpr auto WHITE = tcod::ColorRGB{255, 255, 255};
