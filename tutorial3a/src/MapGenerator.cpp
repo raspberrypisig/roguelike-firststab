@@ -6,7 +6,7 @@ MapGenerator::MapGenerator(int width, int height) : map(Map(width, height)), wid
 
 Map MapGenerator::generate() {
   auto bsp{TCODBsp{0, 0, width, height}};
-  bsp.splitRecursive(NULL, MAX_GENERATOR_LEVELS, MAX_ROOM_SIZE, MIN_ROOM_SIZE, MAX_H_RATIO, MAX_V_RATIO);
+  bsp.splitRecursive(NULL, BSP_MAX_GENERATOR_LEVELS, BSP_MIN_ROOM_WIDTH, BSP_MIN_ROOM_HEIGHT, BSP_MAX_H_RATIO, BSP_MAX_V_RATIO);
   bsp.traverseInvertedLevelOrder(this, NULL);
   return map;
 }

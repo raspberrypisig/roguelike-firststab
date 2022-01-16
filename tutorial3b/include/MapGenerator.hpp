@@ -9,11 +9,13 @@
 
 namespace tutorial {
 
-constexpr static auto MAX_GENERATOR_LEVELS = 8;
-constexpr static auto MAX_ROOM_SIZE = 14;
-constexpr static auto MIN_ROOM_SIZE = 6;
-constexpr static auto MAX_H_RATIO = 2.5F;
-constexpr static auto MAX_V_RATIO = 1.5F;
+constexpr static auto BSP_MAX_GENERATOR_LEVELS = 8;
+constexpr static auto BSP_MIN_ROOM_WIDTH = 14;
+constexpr static auto BSP_MIN_ROOM_HEIGHT = 6;
+constexpr static auto BSP_MAX_H_RATIO = 2.5F;
+constexpr static auto BSP_MAX_V_RATIO = 1.5F;
+
+constexpr static auto MIN_ROOM_HEIGHT = 4;
 
 Map generate_map(int width, int height);
 
