@@ -33,7 +33,7 @@ void MapGenerator::generate_corridors() {
   });
 
   int room_index = unconnected_rooms.front().room_index;
-  dig(reference_room.centre, map.rooms[room_index].centre);
+  dig(reference_room, map.rooms[room_index]);
 }
 
 bool MapGenerator::visitNode(TCODBsp *node, void *userData) {
@@ -76,8 +76,22 @@ void MapGenerator::cull() {
   map.rooms.erase(map.rooms.begin() + room_count, map.rooms.end());
 }
 
-void MapGenerator::dig(pos_t room1, pos_t room2) {
+/*
+x1, y1 - coords of first room
+w1, h1 - size of first room, etc.
+
+if(x1 + w1 < x2 || x2 + w2 < x1) then vertical
+if(y1 + h1 < y2 || y2 + h2 < y1) then horizontal
+if(both) then random
+if(none) they overleap and doesn't need to be connected via coridor
+
+*/
+void MapGenerator::dig(Room room1, Room room2) {
   //start digging
+  int a = room1.bottom_right.x - room2.top_left.x;
+  int b = room2.bottom_right.x - room1.top_left.x;
+  int c = room1.bottom_right.y - room2.top_left.y;
+  int d = room2.bottom_right.y - room1.top_left.y;
 }
 
 int manhattan_distance(int x1, int x2, int y1, int y2) {
