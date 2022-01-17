@@ -18,15 +18,16 @@ void MapGenerator::generate_rooms() {
 }
 
 void MapGenerator::generate_corridors() {
-  std::vector<ConnectedRoom> connectedRooms{ConnectedRoom{.room_index = 0, .distance = 0}};
-  std::vector<UnconnectedRoom> unconnectedRooms;
+  std::vector<ConnectedRoom> connected_rooms{ConnectedRoom{.room_index = 0, .distance = 0}};
+  std::vector<UnconnectedRoom> unconnected_rooms;
   Room &reference_room = map.rooms.front();
 
-  int i = 0;
-  std::transform(map.rooms.begin() + 1, map.rooms.end(), std::back_inserter(unconnectedRooms), [&i, &reference_room](const Room &r) {
+  int i = 1;
+  std::transform(map.rooms.begin() + 1, map.rooms.end(), std::back_inserter(unconnected_rooms), [&i, &reference_room](const Room &r) mutable {
     int distance = manhattan_distance(reference_room.centre.x, reference_room.centre.y, r.centre.x, r.centre.y);
-    return UnconnectedRoom{.room_index = i++, .distance = distance};
+    return UnconnectedRoom({.room_index = i++, .distance = distance});
   });
+  unconnected_rooms.erase(unconnected_rooms.begin());
 }
 
 bool MapGenerator::visitNode(TCODBsp *node, void *userData) {
