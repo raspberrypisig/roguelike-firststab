@@ -48,6 +48,7 @@ class MapGenerator : public ITCODBspCallback {
   Map map;
   void generate_rooms();
   void generate_corridors();
+  void dig(pos_t room1, pos_t room2);
 };
 
 int manhattan_distance(int x1, int y1, int x2, int y2);

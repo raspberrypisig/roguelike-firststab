@@ -27,7 +27,13 @@ void MapGenerator::generate_corridors() {
     int distance = manhattan_distance(reference_room.centre.x, reference_room.centre.y, r.centre.x, r.centre.y);
     return UnconnectedRoom({.room_index = i++, .distance = distance});
   });
-  unconnected_rooms.erase(unconnected_rooms.begin());
+
+  std::sort(unconnected_rooms.begin(), unconnected_rooms.end(), [](const UnconnectedRoom &r1, const UnconnectedRoom &r2) {
+    return r1.distance < r2.distance;
+  });
+
+  int room_index = unconnected_rooms.front().room_index;
+  dig(reference_room.centre, map.rooms[room_index].centre);
 }
 
 bool MapGenerator::visitNode(TCODBsp *node, void *userData) {
@@ -68,6 +74,10 @@ void MapGenerator::cull() {
   int room_count = TCODRandom::getInstance()->getInt(MIN_ROOM_NUMBER, MAX_ROOM_NUMBER);
   std::shuffle(map.rooms.begin(), map.rooms.end(), rng);
   map.rooms.erase(map.rooms.begin() + room_count, map.rooms.end());
+}
+
+void MapGenerator::dig(pos_t room1, pos_t room2) {
+  //start digging
 }
 
 int manhattan_distance(int x1, int x2, int y1, int y2) {
