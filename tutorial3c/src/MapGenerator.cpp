@@ -32,8 +32,13 @@ void MapGenerator::generate_corridors() {
     return r1.distance < r2.distance;
   });
 
-  int room_index = unconnected_rooms.front().room_index;
-  dig(reference_room, map.rooms[room_index]);
+  while (unconnected_rooms.size() != 0) {
+    int room_index = unconnected_rooms.front().room_index;
+    dig(reference_room, map.rooms[room_index]);
+    reference_room = map.rooms[room_index];
+    connected_rooms.push_back(unconnected_rooms.front());
+    unconnected_rooms.erase(unconnected_rooms.begin());
+  }
 }
 
 bool MapGenerator::visitNode(TCODBsp *node, void *userData) {
@@ -117,6 +122,15 @@ void MapGenerator::dig(Room room1, Room room2) {
 
   else {
     // vertical passage
+    if (a > 0)
+      std::swap(room1, room2);
+    if (a < 0 && c > 0 || a > 0 && c < 0)
+      intermediate_x = min_x;
+    else
+      intermediate_x = max_x;
+
+    map.tunnels.push_back(Tunnel{pos_t{min_x, min_y}, std::abs(room2.centre.x - room1.centre.x), 1});
+    map.tunnels.push_back(Tunnel{pos_t{intermediate_x, intermediate_y}, 1, std::abs(room2.centre.y - room1.centre.y)});
   }
 }
 
