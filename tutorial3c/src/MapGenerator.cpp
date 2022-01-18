@@ -93,23 +93,26 @@ void MapGenerator::dig(Room room1, Room room2) {
   int c = room1.bottom_right.y - room2.top_left.y;  // <0 room1 above room2
   int d = room2.bottom_right.y - room1.top_left.y;  // <0 a horizontal line doesn't exists that bisects both rooms
 
+  int min_x = std::min(room1.centre.x, room2.centre.x);
+  int min_y = std::min(room1.centre.y, room2.centre.y);
+
+  int max_x = std::max(room1.centre.x, room2.centre.x);
+  int max_y = std::max(room1.centre.y, room2.centre.y);
+
+  int intermediate_x = min_x;
+  int intermediate_y = min_y;
+
   if (a < 0 || b < 0) {
     // horizontal passage
-    int x = std::min(room1.centre.x, room2.centre.x);
-    int y = std::min(room1.centre.y, room2.centre.y);
+    if (a > 0)
+      std::swap(room1, room2);
+    if (a < 0 && c > 0 || a > 0 && c < 0)
+      intermediate_x = min_x;
+    else
+      intermediate_x = max_x;
 
-    int v = std::max(room1.centre.x, room2.centre.x);
-    int w = std::max(room1.centre.y, room2.centre.y);
-
-    if (c > 0) {
-      map.tunnels.push_back(Tunnel{pos_t{x, y}, std::abs(room2.centre.x - room1.centre.x), 1});
-      map.tunnels.push_back(Tunnel{pos_t{v, y}, 1, std::abs(room2.centre.y - room1.centre.y)});
-    } else {
-      map.tunnels.push_back(Tunnel{pos_t{x, y}, std::abs(room1.centre.x - room2.centre.x), 1});
-      map.tunnels.push_back(Tunnel{pos_t{v, y}, 1, std::abs(room2.centre.y - room1.centre.y)});
-    }
-    //map.tunnels.push_back(Tunnel{pos_t{x, y}, std::abs(room1.centre.x - room2.centre.x), 1});
-    //map.tunnels.push_back(Tunnel{pos_t{x, y}, 1, std::abs(room2.centre.y - room1.centre.y)});
+    map.tunnels.push_back(Tunnel{pos_t{min_x, min_y}, std::abs(room2.centre.x - room1.centre.x), 1});
+    map.tunnels.push_back(Tunnel{pos_t{intermediate_x, intermediate_y}, 1, std::abs(room2.centre.y - room1.centre.y)});
   }
 
   else {
