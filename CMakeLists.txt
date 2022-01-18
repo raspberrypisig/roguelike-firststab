@@ -5,6 +5,6 @@ project (roguelike-firststab)
 find_package(libtcod CONFIG REQUIRED)
 add_executable(roguelike-firststab main.cpp)
 set(CMAKE_EXE_LINKER_FLAGS " -static")
-target_link_libraries(roguelike-firststab PUBLIC -static-libgcc -static-libstdc++ libtcod::libtcod)
+target_link_libraries(roguelike-firststab PUBLIC libtcod::libtcod)
 add_definitions(-DSDL_MAIN_HANDLED)
 
