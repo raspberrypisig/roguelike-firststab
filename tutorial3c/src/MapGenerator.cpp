@@ -24,7 +24,7 @@ void MapGenerator::generate_corridors() {
 
   int i = 1;
   std::transform(map.rooms.begin() + 1, map.rooms.end(), std::back_inserter(unconnected_rooms), [&i, &reference_room](const Room &r) mutable {
-    int distance = manhattan_distance(reference_room.centre.x, reference_room.centre.y, r.centre.x, r.centre.y);
+    int distance = calculate_distance(reference_room.centre.x, reference_room.centre.y, r.centre.x, r.centre.y);
     return UnconnectedRoom({.room_index = i++, .distance = distance});
   });
 
@@ -88,23 +88,51 @@ if(none) they overleap and doesn't need to be connected via coridor
 */
 void MapGenerator::dig(Room room1, Room room2) {
   //start digging
-  int a = room1.bottom_right.x - room2.top_left.x;
-  int b = room2.bottom_right.x - room1.top_left.x;
-  int c = room1.bottom_right.y - room2.top_left.y;
-  int d = room2.bottom_right.y - room1.top_left.y;
+  int a = room1.bottom_right.x - room2.top_left.x;  // <0 room1 to the left of room2
+  int b = room2.bottom_right.x - room1.top_left.x;  // <0 a vertical line doesn't exist that bisects both rooms
+  int c = room1.bottom_right.y - room2.top_left.y;  // <0 room1 above room2
+  int d = room2.bottom_right.y - room1.top_left.y;  // <0 a horizontal line doesn't exists that bisects both rooms
+
+  if (a < 0 || b < 0) {
+    // horizontal passage
+    int x = std::min(room1.centre.x, room2.centre.x);
+    int y = std::min(room1.centre.y, room2.centre.y);
+
+    int v = std::max(room1.centre.x, room2.centre.x);
+    int w = std::max(room1.centre.y, room2.centre.y);
+
+    if (c > 0) {
+      map.tunnels.push_back(Tunnel{pos_t{x, y}, std::abs(room2.centre.x - room1.centre.x), 1});
+      map.tunnels.push_back(Tunnel{pos_t{v, y}, 1, std::abs(room2.centre.y - room1.centre.y)});
+    } else {
+      map.tunnels.push_back(Tunnel{pos_t{x, y}, std::abs(room1.centre.x - room2.centre.x), 1});
+      map.tunnels.push_back(Tunnel{pos_t{v, y}, 1, std::abs(room2.centre.y - room1.centre.y)});
+    }
+    //map.tunnels.push_back(Tunnel{pos_t{x, y}, std::abs(room1.centre.x - room2.centre.x), 1});
+    //map.tunnels.push_back(Tunnel{pos_t{x, y}, 1, std::abs(room2.centre.y - room1.centre.y)});
+  }
+
+  else {
+    // vertical passage
+  }
 }
 
-int manhattan_distance(int x1, int x2, int y1, int y2) {
+int calculate_distance(int x1, int x2, int y1, int y2) {
   int x_dif, y_dif;
 
   x_dif = x2 - x1;
   y_dif = y2 - y1;
+
+  return x_dif * x_dif + y_dif * y_dif;
+
+  /*
   if (x_dif < 0)
     x_dif = -x_dif;
   if (y_dif < 0)
     y_dif = -y_dif;
 
   return x_dif + y_dif;
+*/
 }
 
 }  // namespace tutorial

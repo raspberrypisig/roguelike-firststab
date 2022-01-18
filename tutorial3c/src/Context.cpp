@@ -51,6 +51,10 @@ void draw_rooms(tcod::Console &console, Map map) {
     tcod::draw_rect(console, {room.top_left.x, room.bottom_right.y, room.width, 1}, WALL_ICON, TCOD_ColorRGB{255, 128, 0}, TCOD_ColorRGB{0, 0, 0}, TCOD_BKGND_SET);
     tcod::draw_rect(console, {room.top_left.x, room.top_left.y, 1, room.height}, WALL_ICON, TCOD_ColorRGB{255, 128, 0}, TCOD_ColorRGB{0, 0, 0}, TCOD_BKGND_SET);
   }
+
+  for (const auto &corridor : map.tunnels) {
+    tcod::draw_rect(console, {corridor.top_left.x, corridor.top_left.y, corridor.width, corridor.height}, FLOOR_ICON, TCOD_ColorRGB{255, 0, 255}, TCOD_ColorRGB{0, 0, 0}, TCOD_BKGND_SET);
+  }
 }
 
 }  // namespace tutorial

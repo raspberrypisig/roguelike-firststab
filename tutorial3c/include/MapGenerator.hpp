@@ -18,6 +18,8 @@ constexpr static auto BSP_MAX_H_RATIO = 2.5F;
 constexpr static auto BSP_MAX_V_RATIO = 1.5F;
 
 constexpr static auto MIN_ROOM_HEIGHT = 4;
+//constexpr static auto MIN_ROOM_NUMBER = 3;
+//constexpr static auto MAX_ROOM_NUMBER = 3;
 constexpr static auto MIN_ROOM_NUMBER = 6;
 constexpr static auto MAX_ROOM_NUMBER = 8;
 
@@ -51,6 +53,6 @@ class MapGenerator : public ITCODBspCallback {
   void dig(Room room1, Room room2);
 };
 
-int manhattan_distance(int x1, int y1, int x2, int y2);
+int calculate_distance(int x1, int y1, int x2, int y2);
 
 }  // namespace tutorial
