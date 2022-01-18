@@ -117,22 +117,13 @@ void MapGenerator::dig(Room room1, Room room2) {
   }
 }
 
-int calculate_distance(int x1, int x2, int y1, int y2) {
+int calculate_distance(int x1, int y1, int x2, int y2) {
   int x_dif, y_dif;
 
   x_dif = x2 - x1;
   y_dif = y2 - y1;
 
   return x_dif * x_dif + y_dif * y_dif;
-
-  /*
-  if (x_dif < 0)
-    x_dif = -x_dif;
-  if (y_dif < 0)
-    y_dif = -y_dif;
-
-  return x_dif + y_dif;
-*/
 }
 
 }  // namespace tutorial
