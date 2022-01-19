@@ -107,31 +107,15 @@ void MapGenerator::dig(Room room1, Room room2) {
   int intermediate_x = min_x;
   int intermediate_y = min_y;
 
-  if (a < 0 || b < 0) {
-    // horizontal passage
-    if (a > 0)
-      std::swap(room1, room2);
-    if (a < 0 && c > 0 || a > 0 && c < 0)
-      intermediate_x = min_x;
-    else
-      intermediate_x = max_x;
+  if (a > 0)
+    std::swap(room1, room2);
+  if (a < 0 && c > 0 || a > 0 && c < 0)
+    intermediate_x = min_x;
+  else
+    intermediate_x = max_x;
 
-    map.tunnels.push_back(Tunnel{pos_t{min_x, min_y}, std::abs(room2.centre.x - room1.centre.x), 1});
-    map.tunnels.push_back(Tunnel{pos_t{intermediate_x, intermediate_y}, 1, std::abs(room2.centre.y - room1.centre.y)});
-  }
-
-  else {
-    // vertical passage
-    if (a > 0)
-      std::swap(room1, room2);
-    if (a < 0 && c > 0 || a > 0 && c < 0)
-      intermediate_x = min_x;
-    else
-      intermediate_x = max_x;
-
-    map.tunnels.push_back(Tunnel{pos_t{min_x, min_y}, std::abs(room2.centre.x - room1.centre.x), 1});
-    map.tunnels.push_back(Tunnel{pos_t{intermediate_x, intermediate_y}, 1, std::abs(room2.centre.y - room1.centre.y)});
-  }
+  map.tunnels.push_back(Tunnel{pos_t{min_x, min_y}, std::abs(room2.centre.x - room1.centre.x), 1});
+  map.tunnels.push_back(Tunnel{pos_t{intermediate_x, intermediate_y}, 1, std::abs(room2.centre.y - room1.centre.y)});
 }
 
 int calculate_distance(int x1, int y1, int x2, int y2) {

@@ -87,3 +87,7 @@ Third step is to put walls around the rooms.
 Inspired by the following to create corridors using the original simplified Rogue algorithm.
 
 https://gamedev.stackexchange.com/questions/50570/creating-and-connecting-rooms-for-a-roguelike
+
+Didn't implement it, though! Tried something quick and dirty. Not perfect, not bad for first go.
+
+![Tutorial 3c](https://raw.githubusercontent.com/raspberrypisig/roguelike-firststab/main/images/tutorial3c.jpg)
