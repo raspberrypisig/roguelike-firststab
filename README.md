@@ -84,10 +84,17 @@ Third step is to put walls around the rooms.
 
 ### Tutorial 3c
 
-Inspired by the following to create corridors using the original simplified Rogue algorithm.
+First attempt at corridors by attempting to connect centers of rooms. Fail!
+
+![Tutorial 3c](https://raw.githubusercontent.com/raspberrypisig/roguelike-firststab/main/images/tutorial3c.jpg)
+
+### Tutorial 3d
+
+Attempt to create a replica of DOS rogue. This time, use logic for corridors from here
 
 https://gamedev.stackexchange.com/questions/50570/creating-and-connecting-rooms-for-a-roguelike
 
-Didn't implement it, though! Tried something quick and dirty. Not perfect, not bad for first go.
+Using IBM VGA ttf font from here https://int10h.org/oldschool-pc-fonts/fontlist/font?ibm_vga_9x16
 
-![Tutorial 3c](https://raw.githubusercontent.com/raspberrypisig/roguelike-firststab/main/images/tutorial3c.jpg)
+Also used a utility called typesheet that converts ttf to spritesheet. Altered it so that remapped the icon
+I need ot the start of the character set.
