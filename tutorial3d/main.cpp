@@ -5,7 +5,7 @@ int main(int argc, char *argv[]) {
   constexpr int WINDOW_HEIGHT = 25;
   const std::string WINDOW_TITLE = "Roguelike libtcod C++ tutorial 3c";
   const std::string font_path = std::filesystem::current_path()
-                                    .concat("/../data/Ac437_IBM_VGA_9x16-2x.png")
+                                    .concat("/../data/Ac437_IBM_VGA_9x16-2x-partial.png")
                                     .generic_string();
 
   tutorial::Engine engine{WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE, font_path};

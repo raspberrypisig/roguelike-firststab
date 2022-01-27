@@ -56,6 +56,18 @@ void draw_rooms(tcod::Console &console, Map map) {
     console.at({room.top_left.x, room.top_left.y}).ch = WALL_TOP_LEFT_CORNER_ICON;
     console.at({room.top_left.x, room.top_left.y}).fg = TCOD_ColorRGB{255, 128, 0};
     console.at({room.top_left.x, room.top_left.y}).bg = TCOD_ColorRGB{0, 0, 0};
+
+    console.at({room.top_left.x, room.bottom_right.y}).ch = WALL_BOTTOM_LEFT_CORNER_ICON;
+    console.at({room.top_left.x, room.bottom_right.y}).fg = TCOD_ColorRGB{255, 128, 0};
+    console.at({room.top_left.x, room.bottom_right.y}).bg = TCOD_ColorRGB{0, 0, 0};
+
+    console.at({room.bottom_right.x, room.top_left.y}).ch = WALL_TOP_RIGHT_CORNER_ICON;
+    console.at({room.bottom_right.x, room.top_left.y}).fg = TCOD_ColorRGB{255, 128, 0};
+    console.at({room.bottom_right.x, room.top_left.y}).bg = TCOD_ColorRGB{0, 0, 0};
+
+    console.at({room.bottom_right.x, room.bottom_right.y}).ch = WALL_BOTTOM_RIGHT_CORNER_ICON;
+    console.at({room.bottom_right.x, room.bottom_right.y}).fg = TCOD_ColorRGB{255, 128, 0};
+    console.at({room.bottom_right.x, room.bottom_right.y}).bg = TCOD_ColorRGB{0, 0, 0};
   }
 
   for (const auto &corridor : map.tunnels) {

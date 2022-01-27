@@ -10,13 +10,15 @@
 namespace tutorial {
 
 constexpr static auto WALL_ICON = tcod::CHARMAP_CP437[205];
-constexpr static auto WALL_HORIZONTAL_ICON = tcod::CHARMAP_CP437[205];
-constexpr static auto WALL_VERTICAL_ICON = tcod::CHARMAP_CP437[186];
-constexpr static auto WALL_TOP_LEFT_CORNER_ICON = tcod::CHARMAP_CP437[201];
-constexpr static auto WALL_TOP_RIGHT_CORNER_ICON = tcod::CHARMAP_CP437[187];
-constexpr static auto WALL_BOTTOM_LEFT_CORNER_ICON = tcod::CHARMAP_CP437[200];
-constexpr static auto WALL_BOTTOM_RIGHT_CORNER_ICON = tcod::CHARMAP_CP437[188];
-constexpr auto FLOOR_ICON = tcod::CHARMAP_CP437[249];
+constexpr static auto WALL_HORIZONTAL_ICON = tcod::CHARMAP_CP437[241];
+constexpr static auto WALL_VERTICAL_ICON = tcod::CHARMAP_CP437[251];
+constexpr static auto WALL_TOP_LEFT_CORNER_ICON = tcod::CHARMAP_CP437[243];
+constexpr static auto WALL_TOP_RIGHT_CORNER_ICON = tcod::CHARMAP_CP437[249];
+constexpr static auto WALL_BOTTOM_LEFT_CORNER_ICON = tcod::CHARMAP_CP437[245];
+constexpr static auto WALL_BOTTOM_RIGHT_CORNER_ICON = tcod::CHARMAP_CP437[247];
+constexpr auto FLOOR_ICON = tcod::CHARMAP_CP437[217];
+constexpr auto DOOR_VERTICAL = tcod::CHARMAP_CP437[219];
+constexpr auto DOOR_HORIZONTAL = tcod::CHARMAP_CP437[221];
 
 class Context {
  public:
