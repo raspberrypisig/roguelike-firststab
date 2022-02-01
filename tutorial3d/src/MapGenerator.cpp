@@ -20,7 +20,7 @@ void MapGenerator::generate_rooms() {
 void MapGenerator::generate_corridors() {
   std::vector<ConnectedRoom> connected_rooms{ConnectedRoom{.room_index = 0, .distance = 0}};
   std::vector<UnconnectedRoom> unconnected_rooms;
-  Room &reference_room = map.rooms.front();
+  Room reference_room = map.rooms.front();
 
   int i = 1;
   std::transform(map.rooms.begin() + 1, map.rooms.end(), std::back_inserter(unconnected_rooms), [&i, &reference_room](const Room &r) mutable {
@@ -34,7 +34,8 @@ void MapGenerator::generate_corridors() {
 
   while (unconnected_rooms.size() != 0) {
     int room_index = unconnected_rooms.front().room_index;
-    dig(reference_room, map.rooms[room_index]);
+    //dig(reference_room, map.rooms[room_index]);
+    generate_doors_and_passages(reference_room, map.rooms[room_index]);
     reference_room = map.rooms[room_index];
     connected_rooms.push_back(unconnected_rooms.front());
     unconnected_rooms.erase(unconnected_rooms.begin());
@@ -125,6 +126,34 @@ int calculate_distance(int x1, int y1, int x2, int y2) {
   y_dif = y2 - y1;
 
   return x_dif * x_dif + y_dif * y_dif;
+}
+
+void MapGenerator::generate_doors_and_passages(Room room1, Room room2) {
+  int a = room1.bottom_right.x - room2.top_left.x;  // <0 room1 to the left of room2
+  int b = room2.bottom_right.x - room1.top_left.x;  // <0 a vertical line doesn't exist that bisects both rooms
+  int c = room1.bottom_right.y - room2.top_left.y;  // <0 room1 above room2
+  int d = room2.bottom_right.y - room1.top_left.y;
+  bool e = !(room2.bottom_right.y < room1.top_left.y || room1.bottom_right.y < room2.top_left.y);
+  bool f = !(room2.bottom_right.x < room1.top_left.x || room1.bottom_right.x < room2.top_left.x);
+
+  if (f) {
+    int door_x = (room1.centre.x + room2.centre.x) / 2;
+    if (c < 0) {
+      //
+      map.doors.push_back(std::array<pos_t, 2>{pos_t{door_x, room1.bottom_right.y}, pos_t{door_x, room2.top_left.y}});
+    }
+
+    else {
+      //
+      map.doors.push_back(std::array<pos_t, 2>{pos_t{door_x, room2.bottom_right.y}, pos_t{door_x, room1.top_left.y}});
+    }
+  }
+
+  else if (e) {
+  }
+
+  else {
+  }
 }
 
 }  // namespace tutorial

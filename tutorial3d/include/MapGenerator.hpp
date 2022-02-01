@@ -49,6 +49,7 @@ class MapGenerator : public ITCODBspCallback {
   int height;
   Map map;
   void generate_rooms();
+  void generate_doors_and_passages(Room room1, Room room2);
   void generate_corridors();
   void dig(Room room1, Room room2);
 };

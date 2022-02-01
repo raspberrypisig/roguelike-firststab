@@ -7,4 +7,4 @@ struct pos_t {
   int y;
 };
 
-} 
+}  // namespace tutorial

@@ -41,7 +41,7 @@ void draw_char(tcod::Console &console, pos_t pos, int icon,
 void blit(tcod::Console &src, tcod::Console &dest) { tcod::blit(dest, src); }
 
 void draw_rooms(tcod::Console &console, Map map) {
-  for (const auto &room : map.rooms) {
+  for (auto room : map.rooms) {
     //draw floor
     tcod::draw_rect(console, {room.top_left.x + 2, room.top_left.y + 1, room.width - 3, room.height - 2}, FLOOR_ICON, TCOD_ColorRGB{128, 255, 0}, TCOD_ColorRGB{0, 0, 0}, TCOD_BKGND_SET);
 

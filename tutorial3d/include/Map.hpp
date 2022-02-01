@@ -1,10 +1,13 @@
 #pragma once
 
+#include <array>
 #include <vector>
 
 #include "Rectangle.hpp"
 
 namespace tutorial {
+
+using Doors = std::array<pos_t, 2>;
 
 class Map {
  public:
@@ -16,6 +19,7 @@ class Map {
 
   std::vector<Room> rooms;
   std::vector<Tunnel> tunnels;
+  std::vector<Doors> doors;
 
  private:
   int width;
