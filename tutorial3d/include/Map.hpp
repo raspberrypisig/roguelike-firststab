@@ -3,6 +3,7 @@
 #include <array>
 #include <vector>
 
+#include "Passage.hpp"
 #include "Rectangle.hpp"
 
 namespace tutorial {
@@ -18,8 +19,9 @@ class Map {
   void addRoom(Room room);
 
   std::vector<Room> rooms;
-  std::vector<Tunnel> tunnels;
+  //std::vector<Tunnel> tunnels;
   std::vector<Doors> doors;
+  std::vector<Passage> passages;
 
  private:
   int width;

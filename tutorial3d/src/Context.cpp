@@ -70,9 +70,9 @@ void draw_rooms(tcod::Console &console, Map map) {
     console.at({room.bottom_right.x, room.bottom_right.y}).bg = TCOD_ColorRGB{0, 0, 0};
   }
 
-  for (const auto &corridor : map.tunnels) {
-    //tcod::draw_rect(console, {corridor.top_left.x, corridor.top_left.y, corridor.width, corridor.height}, FLOOR_ICON, TCOD_ColorRGB{255, 0, 255}, TCOD_ColorRGB{0, 0, 0}, TCOD_BKGND_SET);
-  }
+  //for (const auto &corridor : map.tunnels) {
+  //tcod::draw_rect(console, {corridor.top_left.x, corridor.top_left.y, corridor.width, corridor.height}, FLOOR_ICON, TCOD_ColorRGB{255, 0, 255}, TCOD_ColorRGB{0, 0, 0}, TCOD_BKGND_SET);
+  //}
 }
 
 }  // namespace tutorial

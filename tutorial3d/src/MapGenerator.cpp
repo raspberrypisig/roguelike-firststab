@@ -93,6 +93,7 @@ if(none) they overleap and doesn't need to be connected via coridor
 
 */
 void MapGenerator::dig(Room room1, Room room2) {
+  /*
   //start digging
   int a = room1.bottom_right.x - room2.top_left.x;  // <0 room1 to the left of room2
   int b = room2.bottom_right.x - room1.top_left.x;  // <0 a vertical line doesn't exist that bisects both rooms
@@ -117,6 +118,7 @@ void MapGenerator::dig(Room room1, Room room2) {
 
   map.tunnels.push_back(Tunnel{pos_t{min_x, min_y}, std::abs(room2.centre.x - room1.centre.x), 1});
   map.tunnels.push_back(Tunnel{pos_t{intermediate_x, intermediate_y}, 1, std::abs(room2.centre.y - room1.centre.y)});
+  */
 }
 
 int calculate_distance(int x1, int y1, int x2, int y2) {
@@ -137,15 +139,18 @@ void MapGenerator::generate_doors_and_passages(Room room1, Room room2) {
   bool f = !(room2.bottom_right.x < room1.top_left.x || room1.bottom_right.x < room2.top_left.x);
 
   if (f) {
-    int door_x = (room1.centre.x + room2.centre.x) / 2;
+    //int door_x = (room1.centre.x + room2.centre.x) / 2;
+    int door_x = (std::max(room1.top_left.x, room2.top_left.x) + std::min(room1.bottom_right.x, room2.bottom_right.x)) / 2;
     if (c < 0) {
       //
-      map.doors.push_back(std::array<pos_t, 2>{pos_t{door_x, room1.bottom_right.y}, pos_t{door_x, room2.top_left.y}});
+      //map.doors.push_back(std::array<pos_t, 2>{pos_t{door_x, room1.bottom_right.y}, pos_t{door_x, room2.top_left.y}});
+      map.passages.push_back(Passage{.door1 = {door_x, room1.bottom_right.y}, .door2 = {door_x, room2.top_left.y}, .passage_type = PassageType::VERTICAL});
     }
 
     else {
       //
-      map.doors.push_back(std::array<pos_t, 2>{pos_t{door_x, room2.bottom_right.y}, pos_t{door_x, room1.top_left.y}});
+      //map.doors.push_back(std::array<pos_t, 2>{pos_t{door_x, room2.bottom_right.y}, pos_t{door_x, room1.top_left.y}});
+      map.passages.push_back(Passage{.door1 = {door_x, room2.bottom_right.y}, .door2 = {door_x, room1.top_left.y}, .passage_type = PassageType::HORIZONTAL});
     }
   }
 
