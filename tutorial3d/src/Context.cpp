@@ -70,6 +70,21 @@ void draw_rooms(tcod::Console &console, Map map) {
     console.at({room.bottom_right.x, room.bottom_right.y}).bg = TCOD_ColorRGB{0, 0, 0};
   }
 
+  for (auto passage : map.passages) {
+    switch (passage.passage_type) {
+      case PassageType::VERTICAL:
+        console.at({passage.door1.x, passage.door1.y}).ch = DOOR_VERTICAL;
+        console.at({passage.door1.x, passage.door1.y}).fg = TCOD_ColorRGB{255, 128, 0};
+        console.at({passage.door1.x, passage.door1.y}).bg = TCOD_ColorRGB{0, 0, 0};
+
+        console.at({passage.door2.x, passage.door2.y}).ch = DOOR_VERTICAL;
+        console.at({passage.door2.x, passage.door2.y}).fg = TCOD_ColorRGB{255, 128, 0};
+        console.at({passage.door2.x, passage.door2.y}).bg = TCOD_ColorRGB{0, 0, 0};
+
+        break;
+    }
+  }
+
   //for (const auto &corridor : map.tunnels) {
   //tcod::draw_rect(console, {corridor.top_left.x, corridor.top_left.y, corridor.width, corridor.height}, FLOOR_ICON, TCOD_ColorRGB{255, 0, 255}, TCOD_ColorRGB{0, 0, 0}, TCOD_BKGND_SET);
   //}

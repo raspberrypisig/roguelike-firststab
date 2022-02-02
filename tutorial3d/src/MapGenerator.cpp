@@ -150,7 +150,7 @@ void MapGenerator::generate_doors_and_passages(Room room1, Room room2) {
     else {
       //
       //map.doors.push_back(std::array<pos_t, 2>{pos_t{door_x, room2.bottom_right.y}, pos_t{door_x, room1.top_left.y}});
-      map.passages.push_back(Passage{.door1 = {door_x, room2.bottom_right.y}, .door2 = {door_x, room1.top_left.y}, .passage_type = PassageType::HORIZONTAL});
+      map.passages.push_back(Passage{.door1 = {door_x, room2.bottom_right.y}, .door2 = {door_x, room1.top_left.y}, .passage_type = PassageType::VERTICAL});
     }
   }
 
