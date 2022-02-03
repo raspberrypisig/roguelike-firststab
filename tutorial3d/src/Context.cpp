@@ -81,6 +81,21 @@ void draw_rooms(tcod::Console &console, Map map) {
         console.at({passage.door2.x, passage.door2.y}).fg = TCOD_ColorRGB{255, 128, 0};
         console.at({passage.door2.x, passage.door2.y}).bg = TCOD_ColorRGB{0, 0, 0};
 
+        tcod::draw_rect(console, {passage.door1.x, passage.door1.y + 1, 1, passage.door2.y - passage.door1.y - 1}, TUNNEL_ICON, TCOD_ColorRGB{128, 128, 128}, TCOD_ColorRGB{0, 0, 0});
+
+        break;
+
+      case PassageType::HORIZONTAL:
+        console.at({passage.door1.x, passage.door1.y}).ch = DOOR_HORIZONTAL;
+        console.at({passage.door1.x, passage.door1.y}).fg = TCOD_ColorRGB{255, 128, 0};
+        console.at({passage.door1.x, passage.door1.y}).bg = TCOD_ColorRGB{0, 0, 0};
+
+        console.at({passage.door2.x, passage.door2.y}).ch = DOOR_HORIZONTAL;
+        console.at({passage.door2.x, passage.door2.y}).fg = TCOD_ColorRGB{255, 128, 0};
+        console.at({passage.door2.x, passage.door2.y}).bg = TCOD_ColorRGB{0, 0, 0};
+
+        tcod::draw_rect(console, {passage.door1.x + 1, passage.door1.y, passage.door2.x - passage.door1.x - 1, 1}, TUNNEL_ICON, TCOD_ColorRGB{128, 128, 128}, TCOD_ColorRGB{0, 0, 0});
+
         break;
     }
   }

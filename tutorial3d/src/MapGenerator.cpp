@@ -155,6 +155,15 @@ void MapGenerator::generate_doors_and_passages(Room room1, Room room2) {
   }
 
   else if (e) {
+    int door_y = (std::max(room1.top_left.y, room2.top_left.y) + std::min(room1.bottom_right.y, room2.bottom_right.y)) / 2;
+
+    if (a < 0) {
+      map.passages.push_back(Passage{.door1 = {room1.bottom_right.x, door_y}, .door2 = {room2.top_left.x, door_y}, .passage_type = PassageType::HORIZONTAL});
+    }
+
+    else {
+      map.passages.push_back(Passage{.door1 = {room2.bottom_right.x, door_y}, .door2 = {room1.top_left.x, door_y}, .passage_type = PassageType::HORIZONTAL});
+    }
   }
 
   else {
