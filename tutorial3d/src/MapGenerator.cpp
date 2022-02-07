@@ -135,26 +135,21 @@ void MapGenerator::generate_doors_and_passages(Room room1, Room room2) {
   int b = room2.bottom_right.x - room1.top_left.x;  // <0 a vertical line doesn't exist that bisects both rooms
   int c = room1.bottom_right.y - room2.top_left.y;  // <0 room1 above room2
   int d = room2.bottom_right.y - room1.top_left.y;
-  bool e = !(room2.bottom_right.y < room1.top_left.y || room1.bottom_right.y < room2.top_left.y);
-  bool f = !(room2.bottom_right.x < room1.top_left.x || room1.bottom_right.x < room2.top_left.x);
+  bool do_rooms_intersect_horizontally = !(room2.bottom_right.y < room1.top_left.y || room1.bottom_right.y < room2.top_left.y);
+  bool do_rooms_intersect_vertically = !(room2.bottom_right.x < room1.top_left.x || room1.bottom_right.x < room2.top_left.x);
 
-  if (f) {
-    //int door_x = (room1.centre.x + room2.centre.x) / 2;
+  if (do_rooms_intersect_vertically) {
     int door_x = (std::max(room1.top_left.x, room2.top_left.x) + std::min(room1.bottom_right.x, room2.bottom_right.x)) / 2;
     if (c < 0) {
-      //
-      //map.doors.push_back(std::array<pos_t, 2>{pos_t{door_x, room1.bottom_right.y}, pos_t{door_x, room2.top_left.y}});
       map.passages.push_back(Passage{.door1 = {door_x, room1.bottom_right.y}, .door2 = {door_x, room2.top_left.y}, .passage_type = PassageType::VERTICAL});
     }
 
     else {
-      //
-      //map.doors.push_back(std::array<pos_t, 2>{pos_t{door_x, room2.bottom_right.y}, pos_t{door_x, room1.top_left.y}});
       map.passages.push_back(Passage{.door1 = {door_x, room2.bottom_right.y}, .door2 = {door_x, room1.top_left.y}, .passage_type = PassageType::VERTICAL});
     }
   }
 
-  else if (e) {
+  else if (do_rooms_intersect_horizontally) {
     int door_y = (std::max(room1.top_left.y, room2.top_left.y) + std::min(room1.bottom_right.y, room2.bottom_right.y)) / 2;
 
     if (a < 0) {
@@ -167,6 +162,47 @@ void MapGenerator::generate_doors_and_passages(Room room1, Room room2) {
   }
 
   else {
+    //
+    int i = 0;
+
+    auto create_random_doors1 = [](Room room1, Room room2) {
+      int door1_x = TCODRandom::getInstance()->getInt(room1.top_left.x + 1, room1.bottom_right.x - 1);
+      int door1_y = room1.bottom_right.y;
+      int door2_x = room2.top_left.x;
+      int door2_y = TCODRandom::getInstance()->getInt(room2.top_left.y + 1, room2.bottom_right.y - 1);
+    };
+
+    auto create_random_doors2 = [](Room room1, Room room2) {
+      int door1_x = TCODRandom::getInstance()->getInt(room1.top_left.x + 1, room1.bottom_right.x - 1);
+      int door1_y = room1.top_left.y;
+      int door2_x = room2.top_left.x;
+      int door2_y = TCODRandom::getInstance()->getInt(room2.top_left.y + 1, room2.bottom_right.y - 1);
+    };
+
+    if (c < 0 && a > 0) {
+      create_random_doors2(room2, room1);
+    }
+
+    else if (c < 0 && a < 0) {
+      int door1_x = TCODRandom::getInstance()->getInt(room1.top_left.x + 1, room1.bottom_right.x - 1);
+      int door1_y = room1.bottom_right.y;
+      int door2_x = room2.top_left.x;
+      int door2_y = TCODRandom::getInstance()->getInt(room2.top_left.y + 1, room2.bottom_right.y - 1);
+    }
+
+    else if (c > 0 && a > 0) {
+      create_random_doors1(room2, room1);
+    }
+
+    else {
+      create_random_doors2(room1, room2);
+      /*
+      int door1_x = TCODRandom::getInstance()->getInt(room1.top_left.x + 1, room1.bottom_right.x - 1);
+      int door1_y = room1.top_left.y;
+      int door2_x = room2.top_left.x;
+      int door2_y = TCODRandom::getInstance()->getInt(room2.top_left.y + 1, room2.bottom_right.y - 1);
+      */
+    }
   }
 }
 
