@@ -165,18 +165,20 @@ void MapGenerator::generate_doors_and_passages(Room room1, Room room2) {
     //
     int i = 0;
 
-    auto create_random_doors1 = [](Room room1, Room room2) {
+    auto create_random_doors1 = [this](Room room1, Room room2) {
       int door1_x = TCODRandom::getInstance()->getInt(room1.top_left.x + 1, room1.bottom_right.x - 1);
       int door1_y = room1.bottom_right.y;
       int door2_x = room2.top_left.x;
       int door2_y = TCODRandom::getInstance()->getInt(room2.top_left.y + 1, room2.bottom_right.y - 1);
+      this->map.passages.push_back(Passage{.door1 = {door1_x, door1_y}, .door2 = {door2_x, door2_y}, .passage_type = PassageType::BENT});
     };
 
-    auto create_random_doors2 = [](Room room1, Room room2) {
+    auto create_random_doors2 = [this](Room room1, Room room2) {
       int door1_x = TCODRandom::getInstance()->getInt(room1.top_left.x + 1, room1.bottom_right.x - 1);
       int door1_y = room1.top_left.y;
       int door2_x = room2.top_left.x;
       int door2_y = TCODRandom::getInstance()->getInt(room2.top_left.y + 1, room2.bottom_right.y - 1);
+      this->map.passages.push_back(Passage{.door1 = {door1_x, door1_y}, .door2 = {door2_x, door2_y}, .passage_type = PassageType::BENT});
     };
 
     if (c < 0 && a > 0) {
@@ -184,10 +186,13 @@ void MapGenerator::generate_doors_and_passages(Room room1, Room room2) {
     }
 
     else if (c < 0 && a < 0) {
+      create_random_doors1(room1, room2);
+      /*
       int door1_x = TCODRandom::getInstance()->getInt(room1.top_left.x + 1, room1.bottom_right.x - 1);
       int door1_y = room1.bottom_right.y;
       int door2_x = room2.top_left.x;
       int door2_y = TCODRandom::getInstance()->getInt(room2.top_left.y + 1, room2.bottom_right.y - 1);
+      */
     }
 
     else if (c > 0 && a > 0) {

@@ -40,6 +40,7 @@ class MapGenerator : public ITCODBspCallback {
   Room generate_room(int x, int y, int width, int height);
 
   void cull();
+  Map map;
 
  private:
   int maxRooms;
@@ -47,7 +48,7 @@ class MapGenerator : public ITCODBspCallback {
   int maxRoomSize;
   int width;
   int height;
-  Map map;
+
   void generate_rooms();
   void generate_doors_and_passages(Room room1, Room room2);
   void generate_corridors();
