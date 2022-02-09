@@ -34,11 +34,19 @@ void MapGenerator::generate_corridors() {
 
   while (unconnected_rooms.size() != 0) {
     int room_index = unconnected_rooms.front().room_index;
-    //dig(reference_room, map.rooms[room_index]);
+    // dig(reference_room, map.rooms[room_index]);
     generate_doors_and_passages(reference_room, map.rooms[room_index]);
     reference_room = map.rooms[room_index];
     connected_rooms.push_back(unconnected_rooms.front());
     unconnected_rooms.erase(unconnected_rooms.begin());
+    /*
+    for (auto &room : unconnected_rooms) {
+      room.distance = calculate_distance(reference_room.centre.x, reference_room.centre.y, map.rooms[room_index].centre.x, map.rooms[room_index].centre.y);
+    }
+    std::sort(unconnected_rooms.begin(), unconnected_rooms.end(), [](const UnconnectedRoom &r1, const UnconnectedRoom &r2) {
+      return r1.distance < r2.distance;
+    });
+    */
   }
 }
 
